@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import './Modal.css';
+import Toolbar from '../NavBar/Toolbar/Toolbar'
 
 export default class loginModal extends Component {
     constructor() {
@@ -13,36 +14,41 @@ export default class loginModal extends Component {
     }
 
 
-    onModalClick = () => {
-        this.setState({ open: true })
+    toggleModal = () => {
+        this.setState({ open: !this.state.open })
     };
 
-    onClose = () => {
-        this.setState({ open: false })
-    };
+    //try doing the conditional rendering in Toolbar and then run Modal. 
+    //Give toolbar state and turn into class component
+
 
     render() {
-        const { open } = this.state;
         return (
-                <div className="static-modal" open={open} onHide={this.onClose}>
-                <button onClick={this.onModalClick}>Open</button>
-                <Modal show={this.state.open} onHide={this.onClose}>                
-                 
-                        <Modal.Header>
-                            <Modal.Title>Modal title</Modal.Title>
-                        </Modal.Header>
+            <div className="static-modal">
 
-                        <Modal.Body>One fine body...</Modal.Body>
+                <button onClick={this.toggleModal}>Open</button>
 
-                        <Modal.Footer>
-                            <Button>Sign In</Button>
-                            <Button bsStyle="primary">Register</Button>
-                        </Modal.Footer>
+                {/* <Toolbar
+                    clickNow={this.toggleModal}
+                /> */}
 
-                    
-                   
+                <Modal show={this.state.open} onHide={this.toggleModal}>
+
+                    <Modal.Header>
+                        <Modal.Title>Modal title</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>One fine body...</Modal.Body>
+
+                    <Modal.Footer>
+                        <Button>Sign In</Button>
+                        <Button bsStyle="primary">Register</Button>
+                    </Modal.Footer>
+
+
+
                 </Modal>
-                </div>
+            </div>
         )
     }
 };
