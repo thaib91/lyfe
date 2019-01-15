@@ -33,7 +33,7 @@ render() {
     <div style={{height: '100%'}}>
 
       <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-      <SideDrawer show={this.state.sideDrawerOpen} />;
+      <SideDrawer show={this.state.sideDrawerOpen} close={this.drawerToggleClickHandler} />;
       {backdrop}
 
       <main style={{marginTop: '55px'}}>
