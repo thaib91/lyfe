@@ -21,12 +21,13 @@ const toolbar = props => (
             <div className='toolbar_navigation-items'>
            
                 <ul>
-                    <li><a href='/' >Login</a></li>
+                    <li><a href='/'>Login</a></li>
                     <li><a href='/'>Menu Button 2</a></li>
                 </ul>
             </div>
+           
         </nav>
-        <Modal />
+    <Modal />
     </header>
 );
 

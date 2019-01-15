@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Toolbar from './components/NavBar/Toolbar/Toolbar';
 import SideDrawer from './components/NavBar/SideDrawer/SideDrawer';
 import Backdrop from './components/NavBar/Backdrop/Backdrop';
+import route from './route';
 // import Modal from './components/Dashboard/Modal';
 
 import './App.css';
@@ -33,11 +34,11 @@ render() {
 
       <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
       <SideDrawer show={this.state.sideDrawerOpen} />;
-
       {backdrop}
 
       <main style={{marginTop: '55px'}}>
-      <p>This is the page content</p>
+      <p>This is the landing page content</p>
+      {route}
       </main>
     </div>
   );
