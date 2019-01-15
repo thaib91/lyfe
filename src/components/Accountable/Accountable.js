@@ -44,8 +44,20 @@ class Accountable extends Component {
 
 
     render() {
+        console.log(this.props);
+        const{id, email, username} = this.props.user;
+
+
         return (
-            <div>Accountable</div>
+            <div>
+             <p>Accountable</p>
+             <p>{username}</p>
+             <p>{id}</p>
+             <p>{email}</p>
+
+                
+            
+            </div>
         );
     };
 };

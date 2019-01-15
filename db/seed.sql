@@ -1,12 +1,11 @@
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users
 (
 id SERIAL PRIMARY KEY,
-username VARCHAR(20),
-email VARCHAR(80),
 hash text,
-profile_pic text,
-skills text,
-interests text
+email VARCHAR(80),
+profile_pic text
 );
 
 SELECT * FROM users;
