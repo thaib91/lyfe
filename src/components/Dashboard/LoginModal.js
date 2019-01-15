@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import './LoginModal.css';
-import Toolbar from '../NavBar/Toolbar/Toolbar'
+// import Toolbar from '../NavBar/Toolbar/Toolbar';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
-export default class LoginModal extends Component {
+class LoginModal extends Component {
     constructor() {
         super();
         this.state = {
@@ -30,12 +31,19 @@ export default class LoginModal extends Component {
 
     async loginUser() {
         const { username, password } = this.state;
-        const res = await axios.post('/auth/login', { username, password })   
+        const res = await axios.post('/auth/login', { username, password }) 
+        console.log(this)
+        if(res.data.loggedIn){
+            this.props.history.push('/accountable')
+        }
     }
 
     async registerUser() {
         const {username, password, email} = this.state;
         const res = await axios.post('/auth/register', {username, password, email})
+        if(res.data.loggedIn){
+            this.props.history.push('/accountable')
+        }  
     }
 
 
@@ -85,3 +93,5 @@ export default class LoginModal extends Component {
         )
     }
 };
+
+export default withRouter(LoginModal);

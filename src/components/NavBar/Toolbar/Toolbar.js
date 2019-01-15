@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './Toolbar.css';
 import { Link } from 'react-router-dom';
 import Modal from '../../Dashboard/LoginModal';
@@ -22,7 +21,7 @@ const toolbar = props => (
             <div className='toolbar_navigation-items'>
 
                 <ul>
-                    <Link to='/'><li>Login</li></Link>
+                    <a href='http://localhost:4343/auth/logout'><li>Logout</li></a>
                     <Link to='/accountable'><li>Accountable</li></Link>
                     <Link to='/skillshare'><li>Skillshare</li></Link>
                 </ul>

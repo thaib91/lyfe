@@ -19,14 +19,18 @@ module.exports = {
         const { username, password } = req.body;
         const db = req.app.get('db');
         const user = await db.find_user({ username });
-        if(!user[0]){
-            return res.status(200).send({message:'Username Not Found'})
+        if (!user[0]) {
+            return res.status(200).send({ message: 'Username Not Found' })
         }
         let foundUser = bcrypt.compareSync(password, user[0].hash)
-        if(!foundUser){
-            res.status(401).send({message:'Password Incorrect'});
+        if (!foundUser) {
+            res.status(401).send({ message: 'Password Incorrect' });
         }
         req.session.user = { id: user[0].id, username: user[0].username, email: user[0].email };
         res.status(200).send({ message: 'LoggedIn', userData: req.session.user, loggedIn: true });
+    },
+    logout: (req, res) => { 
+        req.session.destroy();
+        res.redirect('http://localhost:3000/#/landing')
     }
 }

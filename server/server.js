@@ -3,7 +3,10 @@ require('dotenv').config();
 const massive = require('massive');
 const session = require('express-session');
 const {SERVER_PORT, CONNECTION_PORT, SECRET} = process.env;
-const lc = require('./controllers/loginController')
+
+//controllers
+const lc = require('./controllers/loginController');
+const uc = require('./controllers/userController');
 
 const app = express();
 app.use(express.json());
@@ -13,8 +16,16 @@ app.use(session({
     saveUninitialized: false
 }))
 
-app.post('/auth/register', lc.register)
-app.post('/auth/login', lc.login)
+//endpoints for login/registration
+app.post('/auth/register', lc.register);
+app.post('/auth/login', lc.login);
+app.get('/auth/logout', lc.logout);
+
+//endpoint to get data from redux //user controller
+app.get('/api/user/data', uc.userData);
+
+
+
 
 
 
