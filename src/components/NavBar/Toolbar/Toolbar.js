@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './Toolbar.css';
-import Modal from '../../Dashboard/Modal'
+import Modal from '../../Dashboard/LoginModal'
 import DrawerToggle from '../SideDrawer/DrawerToggle';
-// import Modal from '../../Dashboard/Modal'
+// import LoginModal from '../../Dashboard/Modal'
 
 
 
