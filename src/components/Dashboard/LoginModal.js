@@ -31,7 +31,7 @@ class LoginModal extends Component {
     async loginUser() {
         const { email, password } = this.state;
         const res = await axios.post('/auth/login', { email, password })
-        console.log(this)
+        // console.log(this)
         if (res.data.loggedIn) {
             this.props.history.push('/accountable')
         }

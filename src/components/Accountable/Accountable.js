@@ -11,11 +11,18 @@ class Accountable extends Component {
     constructor() {
         super();
         this.state = {
-            user_interests: [],
+            userInput: '',
+            userInterests: [],
+            userGoals: [],
+            userFriends: []
         }
-
     }
 
+    handleChange(prop, value) {
+        this.setState({
+            [prop]: value
+        })
+    }
 
     async componentDidMount() {
         try {
@@ -35,13 +42,29 @@ class Accountable extends Component {
                 }
             })
         }
+        this.getInterests();
     }
 
+    //functions for interests 
     getInterests = async () => {
-        const res = await axios.get(`/api/user/interests/${this.props.user.id}`)
+        const { id } = this.props.user;
+        const res = await axios.get(`/api/user/my_interests/${id}`)
+        // console.log(res.data)
+        this.setState({
+            userInterests: res.data
+        })
+
+    }
+    //create interests using id from sessions which is then updated to redux. 
+    createInterests = async () => {
+        // const {id} = this.props.user;
+        const {userInput, userInterests} = this.state;
+        const res = await axios.post('/api/user/interests/', {userInput})
         console.log(res.data)
         this.setState({
-            user_interests: res.data.userData.user_interests
+            ...userInterests,
+            userInterests: res.data,
+            userInput: ''
         })
 
     }
@@ -60,11 +83,11 @@ class Accountable extends Component {
     render() {
         // console.log(this.props);
         const { id, email, username } = this.props.user;
-        const { user_interests } = this.state;
-        console.log(user_interests)
+        const { userInterests } = this.state;
+        console.log(userInterests)
 
-        let interests = user_interests.map((interest, i)=>{
-            return(
+        let interests = userInterests.map((interest, i) => {
+            return (
                 <div key={i}>{interest.user_interests}</div>
             )
         })
@@ -77,15 +100,13 @@ class Accountable extends Component {
                 <p>{id}</p>
                 <p>{email}</p>
                 <div>{interests}</div>
-                <button onClick={this.getInterests}></button>
-
-
-
+                <input onChange={(e)=>this.handleChange('userInput', e.target.value)} value={this.state.userInput}/>
+                <button onClick={()=>{this.createInterests()}}>Add</button>
             </div>
-        );
+            );
+        };
     };
-};
-
-const mapStateToProps = (reduxState) => reduxState;
-
-export default connect(mapStateToProps, { getUserData })(withRouter(Accountable));
+    
+    const mapStateToProps = (reduxState) => reduxState;
+    
+export default connect(mapStateToProps, {getUserData})(withRouter(Accountable));

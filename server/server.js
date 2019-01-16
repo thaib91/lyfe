@@ -9,6 +9,9 @@ const lc = require('./controllers/loginController');
 const uc = require('./controllers/userController');
 const ic = require('./controllers/interestsController');
 
+//middleware to make sure user is logged in before they can create posts
+const authMiddle = require('./middleware/authMiddleware')
+
 const app = express();
 app.use(express.json());
 app.use(session({
@@ -26,7 +29,9 @@ app.get('/auth/logout', lc.logout);
 app.get('/api/user/data', uc.userData);
 
 //get interests based on session id of user
-app.get('/api/user/interests/:user_id', ic.getInterests);
+
+app.get('/api/user/my_interests/:user_id', ic.getInterests);
+app.post('/api/user/interests/', ic.createInterests)
 
 
 
