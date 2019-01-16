@@ -69,15 +69,12 @@ class Accountable extends Component {
 
     }
 
-
-    // componentDidMount(){
-    //     axios.get('/api/user/data').then((res) => {
-    //         this.props.getUserData(res.data)
-    //     }).catch((e)=>{
-    //         if(e.value)
-    //         this.props.history.push('/landing')
-    //     })
-    // }
+    deleteInterests = async (id) => {
+        const res = await axios.delete(`/api/user/delete/${id}`)
+        this.setState({
+            userInterests: res.data
+        })
+    }
 
 
     render() {
@@ -88,18 +85,22 @@ class Accountable extends Component {
 
         let interests = userInterests.map((interest, i) => {
             return (
-                <div key={i}>{interest.user_interests}</div>
+                <div key={i}>
+                {interest.user_interests}
+                <button onClick={()=>this.deleteInterests(interest.interests_id)}></button>
+
+                </div>
             )
         })
-
-
         return (
             <div>
                 <p>Accountable</p>
                 <p>{username}</p>
                 <p>{id}</p>
                 <p>{email}</p>
+                <div>
                 <div>{interests}</div>
+                </div>
                 <input onChange={(e)=>this.handleChange('userInput', e.target.value)} value={this.state.userInput}/>
                 <button onClick={()=>{this.createInterests()}}>Add</button>
             </div>

@@ -32,6 +32,7 @@ app.get('/api/user/data', uc.userData);
 
 app.get('/api/user/my_interests/:user_id', ic.getInterests);
 app.post('/api/user/interests/', ic.createInterests)
+app.delete('/api/user/delete/:interests_id', ic.deleteInterests)
 
 
 
