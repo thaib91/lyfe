@@ -9,3 +9,18 @@ profile_pic text
 );
 
 SELECT * FROM users;
+
+
+
+
+
+DROP TABLE IF EXISTS interests;
+
+CREATE TABLE interests
+(
+interests_id SERIAL PRIMARY KEY,
+user_id INTEGER REFERENCES users(id),
+user_interests text
+);  
+
+SELECT * FROM interests;

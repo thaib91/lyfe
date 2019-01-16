@@ -8,10 +8,14 @@ import Swal from 'sweetalert2';
 
 
 class Accountable extends Component {
-    // constructor() {
-    //     super();
+    constructor() {
+        super();
+        this.state = {
+            user_interests: [],
+        }
 
-    // }
+    }
+
 
     async componentDidMount() {
         try {
@@ -25,13 +29,23 @@ class Accountable extends Component {
                 title: 'Oops...',
                 text: 'Did you sign up or log in?',
                 // footer: '<a href>Why do I have this issue?</a>'
-              }).then((result)=>{
-                if(result.value){
+            }).then((result) => {
+                if (result.value) {
                     this.props.history.push('/landing')
                 }
-              })
+            })
         }
     }
+
+    getInterests = async () => {
+        const res = await axios.get(`/api/user/interests/${this.props.user.id}`)
+        console.log(res.data)
+        this.setState({
+            user_interests: res.data.userData.user_interests
+        })
+
+    }
+
 
     // componentDidMount(){
     //     axios.get('/api/user/data').then((res) => {
@@ -44,19 +58,29 @@ class Accountable extends Component {
 
 
     render() {
-        console.log(this.props);
-        const{id, email, username} = this.props.user;
+        // console.log(this.props);
+        const { id, email, username } = this.props.user;
+        const { user_interests } = this.state;
+        console.log(user_interests)
+
+        let interests = user_interests.map((interest, i)=>{
+            return(
+                <div key={i}>{interest.user_interests}</div>
+            )
+        })
 
 
         return (
             <div>
-             <p>Accountable</p>
-             <p>{username}</p>
-             <p>{id}</p>
-             <p>{email}</p>
+                <p>Accountable</p>
+                <p>{username}</p>
+                <p>{id}</p>
+                <p>{email}</p>
+                <div>{interests}</div>
+                <button onClick={this.getInterests}></button>
 
-                
-            
+
+
             </div>
         );
     };

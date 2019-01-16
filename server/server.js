@@ -7,6 +7,7 @@ const {SERVER_PORT, CONNECTION_PORT, SECRET} = process.env;
 //controllers
 const lc = require('./controllers/loginController');
 const uc = require('./controllers/userController');
+const ic = require('./controllers/interestsController');
 
 const app = express();
 app.use(express.json());
@@ -24,6 +25,8 @@ app.get('/auth/logout', lc.logout);
 //endpoint to get data from redux //user controller
 app.get('/api/user/data', uc.userData);
 
+//get interests based on session id of user
+app.get('/api/user/interests/:user_id', ic.getInterests);
 
 
 
