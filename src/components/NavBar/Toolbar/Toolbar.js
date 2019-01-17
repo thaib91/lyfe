@@ -1,5 +1,5 @@
 import React from 'react';
-import './Toolbar.css';
+import './Toolbar.scss';
 import { Link } from 'react-router-dom';
 import Modal from '../../Dashboard/LoginModal';
 import DrawerToggle from '../SideDrawer/DrawerToggle';

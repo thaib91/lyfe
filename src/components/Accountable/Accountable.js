@@ -100,11 +100,13 @@ class Accountable extends Component {
             return (
                 <div key={i}>
                     {interest.user_interests}
+
                     <UpdateInterests
                         update={this.updateInterests}
                         text={this.state.editInput}
                         id={interest.interests_id}
                     />
+                    
                     <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete</button>
                 </div>
             )

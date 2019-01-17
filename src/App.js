@@ -6,7 +6,7 @@ import route from './route';
 import { withRouter } from 'react-router-dom';
 // import Modal from './components/Dashboard/Modal';
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   state = {

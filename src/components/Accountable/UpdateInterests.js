@@ -5,6 +5,7 @@ export default class UpdateInterests extends Component {
         super(props);
         this.state = {
             editInput: props.text,
+
         }
     }
 
@@ -16,6 +17,7 @@ export default class UpdateInterests extends Component {
 
     updateInterests() {
         this.props.update(this.props.id, this.state.editInput)
+        this.setState({editInput: ''})
     }
 
     render() {

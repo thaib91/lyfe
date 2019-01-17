@@ -34,9 +34,6 @@ module.exports = {
         const { interests_id } = req.params;
         const { editInput } = req.body;
         const { id } = req.session.user;
-        console.log(req.params)
-        console.log(req.session.user)
-        console.log(req.body)
         if (!id) {
             res.status(401).send('Not Logged In')
         } else {

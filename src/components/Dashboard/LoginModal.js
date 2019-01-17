@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { render } from 'react-dom';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import './LoginModal.css';
+import './LoginModal.scss';
 // import Toolbar from '../NavBar/Toolbar/Toolbar';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
