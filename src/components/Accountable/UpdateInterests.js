@@ -16,7 +16,7 @@ export default class UpdateInterests extends Component {
     }
 
     updateInterests() {
-        this.props.update(this.props.id, this.state.editInput)
+        this.props.updateInterest(this.props.id, this.state.editInput)
         this.setState({editInput: ''})
     }
 

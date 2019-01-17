@@ -36,11 +36,6 @@ class App extends Component {
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} close={this.drawerToggleClickHandler} />;
       {backdrop}
-
-        <main style={{ marginTop: '55px' }}>
-          <p>This is the landing page content</p>
-
-        </main>
         {route}
       </div>
     );

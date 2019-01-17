@@ -11,7 +11,7 @@ const sideDrawer = props => {
     return (
         <nav className={drawerClasses}>
             <ul>
-                <Link to='/'><li onClick={props.close}>Login</li></Link>
+                <Link to='/'><li onClick={props.close}>Logout</li></Link>
                 <Link to='/accountable'><li onClick={props.close}>Accountable</li></Link>
                 <Link to='/skillshare'><li onClick={props.close}>Skillshare</li></Link>
             </ul>

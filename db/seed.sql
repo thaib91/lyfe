@@ -24,3 +24,18 @@ user_interests text
 );  
 
 SELECT * FROM interests;
+
+
+
+
+DROP TABLE IF EXISTS goals;
+
+CREATE TABLE goals
+(
+goal_id SERIAL PRIMARY KEY,
+user_id INTEGER REFERENCES users(id),
+goal text,
+date DATE 
+);  
+
+SELECT * FROM goals;

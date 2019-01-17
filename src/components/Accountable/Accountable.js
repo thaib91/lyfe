@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UpdateInterests from './UpdateInterests';
 import Goal from './Goal/Goal'
-
+import './Accountable.scss'
 
 
 class Accountable extends Component {
@@ -15,6 +15,7 @@ class Accountable extends Component {
         this.state = {
             userInput: '',
             editInput: '',
+            goalInput:'',
             userInterests: [],
             userGoals: [],
             userFriends: []
@@ -46,6 +47,24 @@ class Accountable extends Component {
             })
         }
         this.getInterests();
+        this.getData();
+    }
+    // generic get to get from all end points
+    getData = async () => {
+        const res = await axios.get(`/api/user/get_goals/`)
+        this.setState({
+            userGoals: res.data,
+            userFriends: res.data
+        })
+    }
+    createGoals = async () => {
+        const {goalInput} = this.state;
+        const res = await axios.post(`/api/user/goals`, {goalInput});
+        this.setState({
+            // ...userGoals,
+            userGoals: res.data,
+            userInput: ''
+        })
     }
 
     //functions for interests 
@@ -62,7 +81,7 @@ class Accountable extends Component {
     createInterests = async () => {
         // const {id} = this.props.user;
         const { userInput, userInterests } = this.state;
-        const res = await axios.post('/api/user/interests/', { userInput })
+        const res = await axios.post(`/api/user/interests/`, { userInput })
         this.setState({
             ...userInterests,
             userInterests: res.data,
@@ -94,39 +113,63 @@ class Accountable extends Component {
     render() {
         // console.log(this.props);
         const { id, email, username } = this.props.user;
-        const { userInterests } = this.state;
+        const { userInterests, userGoals } = this.state;
+
+        let goals = userGoals.map((goal, i) => {
+            console.log(goal)
+            return (
+                <div key={i}>
+                    {goal.goal}
+                    {/* <Goal
+                        createGoal={this.createGoals}
+                        goalText={this.state.userInput}
+                        // id={goal.goal_id}
+                    /> */}
+
+
+
+                </div>
+            )
+        })
 
         let interests = userInterests.map((interest, i) => {
             return (
                 <div key={i}>
                     {interest.user_interests}
-                    <Goal 
-                        get={this.getInterests}
-                    />
-
                     <UpdateInterests
-                        update={this.updateInterests}
+                        updateInterest={this.updateInterests}
                         text={this.state.editInput}
                         id={interest.interests_id}
                     />
 
                     <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete</button>
+                    <div>
+
+                    </div>
                 </div>
             )
         })
         return (
-            <div>
+
+            
+            <div className='accountable-content'>
                 <p>Accountable</p>
                 <p>{username}</p>
                 <p>{id}</p>
                 <p>{email}</p>
                 <div>
                     <div>{interests}</div>
+                    <div>{goals}</div>
 
 
-                </div>
+                </div >
+                <div className='create-buttons'>
+                <input className='goal-input' onChange={(e)=>this.handleChange('goalInput', e.target.value)} value={this.state.goalInput}/>
+                <button className='goal-button' onClick={()=>this.createGoals()}>Create Goal</button>
+
                 <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
                 <button onClick={() => { this.createInterests() }}>Add</button>
+                </div>
             </div>
         );
     };

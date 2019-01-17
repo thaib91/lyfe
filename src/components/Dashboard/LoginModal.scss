@@ -8,6 +8,7 @@
 .modal-button {
     display: flex;
     justify-content: center;
+    position: absolute;
     margin: 6px;
     font-size: inherit;
     line-height: 1.42;
@@ -17,14 +18,14 @@
     border-style: solid;
     background: transparent;
     border-radius: 1.46em;
-    cursor: pointer;
+    // cursor: pointer;
     font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
-    user-select: none;
+    // user-select: none;
     vertical-align: bottom;
-    position: relative;
+    // position: relative;
     border-style: solid;
     overflow: hidden;
-    transition: background-color 0.3s, color 0.3s;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
+    // transition: background-color 0.3s, color 0.3s;
+    // outline: none;
+    // -webkit-tap-highlight-color: transparent;
 }

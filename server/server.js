@@ -8,7 +8,7 @@ const { SERVER_PORT, CONNECTION_PORT, SECRET } = process.env;
 const lc = require('./controllers/loginController');
 const uc = require('./controllers/userController');
 const ic = require('./controllers/interestsController');
-
+const gc = require('./controllers/goalController')
 //middleware to make sure user is logged in before they can create posts
 const authMiddle = require('./middleware/authMiddleware')
 
@@ -28,13 +28,16 @@ app.get('/auth/logout', lc.logout);
 //endpoint to get data from redux //user controller
 app.get('/api/user/data', authMiddle.usersOnly, uc.userData);
 
-//get interests based on session id of user
+//get interests based on session id of user//interestsController
 
 app.get('/api/user/my_interests/:user_id', authMiddle.usersOnly, ic.getInterests);
-app.post('/api/user/interests/', authMiddle.usersOnly, ic.createInterests)
-app.delete('/api/user/delete/:interests_id', authMiddle.usersOnly, ic.deleteInterests)
-app.put('/api/user/update_interests/:interests_id', authMiddle.usersOnly, ic.updateInterests)
+app.post('/api/user/interests/', authMiddle.usersOnly, ic.createInterests);
+app.delete('/api/user/delete/:interests_id', authMiddle.usersOnly, ic.deleteInterests);
+app.put('/api/user/update_interests/:interests_id', authMiddle.usersOnly, ic.updateInterests);
 
+//get goals // goalController
+app.get('/api/user/get_goals', gc.getGoals);
+app.post('/api/user/goals', gc.createGoals);
 
 
 

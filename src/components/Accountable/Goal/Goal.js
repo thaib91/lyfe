@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { getUserData } from '../../../ducks/reducer'
+// import axios from 'axios';
+// import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
+// import { getUserData } from '../../../ducks/reducer'
 
 
 export default class Goal extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            userInput: props.goalText
+        }
     }
 
     handleChange(prop, value) {
@@ -16,13 +19,15 @@ export default class Goal extends Component {
         })
     }
 
-    getGoals(){
-        this.props.get()
+    createGoals() {
+        this.props.createGoal(this.state.userInput)
+        this.setState({ userInput: '' })
     }
 
     render() {
         return (
             <div className='goal-page'>
+
 
             </div>
         )
