@@ -33,7 +33,7 @@ app.get('/api/user/data', authMiddle.usersOnly, uc.userData);
 app.get('/api/user/my_interests/:user_id', authMiddle.usersOnly, ic.getInterests);
 app.post('/api/user/interests/', authMiddle.usersOnly, ic.createInterests)
 app.delete('/api/user/delete/:interests_id', authMiddle.usersOnly, ic.deleteInterests)
-app.put('/api/user/update_interests/:interests_id', ic.updateInterests)
+app.put('/api/user/update_interests/:interests_id', authMiddle.usersOnly, ic.updateInterests)
 
 
 

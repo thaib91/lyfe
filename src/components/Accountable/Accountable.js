@@ -5,7 +5,7 @@ import { getUserData } from '../../ducks/reducer';
 import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UpdateInterests from './UpdateInterests';
-
+import Goal from './Goal/Goal'
 
 
 
@@ -100,13 +100,16 @@ class Accountable extends Component {
             return (
                 <div key={i}>
                     {interest.user_interests}
+                    <Goal 
+                        get={this.getInterests}
+                    />
 
                     <UpdateInterests
                         update={this.updateInterests}
                         text={this.state.editInput}
                         id={interest.interests_id}
                     />
-                    
+
                     <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete</button>
                 </div>
             )

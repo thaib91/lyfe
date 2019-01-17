@@ -26,6 +26,7 @@ class LoginModal extends Component {
 
     toggleModal = () => {
         this.setState({ open: !this.state.open })
+
     };
 
     async loginUser() {
@@ -54,10 +55,16 @@ class LoginModal extends Component {
 
     render() {
         return (
+
+        <div className='landing-page'>
+
+            <p className="modal-button">
+            
+            <button onClick={this.toggleModal}>Login/Register</button>
+            </p>
+
+
             <div className="static-modal">
-
-                <button onClick={this.toggleModal}>Open</button>
-
                 <Modal show={this.state.open} onHide={this.toggleModal}>
 
                     <Modal.Header>
@@ -86,6 +93,7 @@ class LoginModal extends Component {
 
                 </Modal>
             </div>
+        </div>
         )
     }
 };
