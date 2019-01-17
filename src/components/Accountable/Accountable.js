@@ -15,7 +15,8 @@ class Accountable extends Component {
         this.state = {
             userInput: '',
             editInput: '',
-            goalInput:'',
+            goalInput: '',
+            goalEdit: '',
             userInterests: [],
             userGoals: [],
             userFriends: []
@@ -58,8 +59,8 @@ class Accountable extends Component {
         })
     }
     createGoals = async () => {
-        const {goalInput} = this.state;
-        const res = await axios.post(`/api/user/goals`, {goalInput});
+        const { goalInput } = this.state;
+        const res = await axios.post(`/api/user/goals`, { goalInput });
         this.setState({
             userGoals: res.data,
             goalInput: ''
@@ -70,6 +71,16 @@ class Accountable extends Component {
         const res = await axios.delete(`/api/user/deleteGoals/${id}`)
         this.setState({
             userGoals: res.data
+        })
+    }
+
+    updateGoals = async (id, goalEdit) => {
+        const {userGoals} = this.state;
+        const res = await axios.put(`/api/user/updateGoal/${id}`, {goalEdit})
+        this.setState({
+            ...userGoals,
+            userGoals: res.data,
+            goalEdit: ''
         })
     }
 
@@ -125,9 +136,11 @@ class Accountable extends Component {
             return (
                 <div key={i}>
                     {goal.goal}
-                    <Goal 
+                    <Goal
+                        updateGoals={this.updateGoals}
                         deleteGoal={this.deleteGoals}
                         id={goal.goal_id}
+                        text={this.state.goalEdit}
                     />
 
 
@@ -156,7 +169,7 @@ class Accountable extends Component {
         })
         return (
 
-            
+
             <div className='accountable-content'>
                 <p>Accountable</p>
                 <p>{username}</p>
@@ -169,11 +182,11 @@ class Accountable extends Component {
 
                 </div >
                 <div className='create-buttons'>
-                <input className='goal-input' onChange={(e)=>this.handleChange('goalInput', e.target.value)} value={this.state.goalInput}/>
-                <button className='goal-button' onClick={()=>this.createGoals()}>Create Goal</button>
+                    <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
+                    <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
-                <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
-                <button onClick={() => { this.createInterests() }}>Share Interests</button>
+                    <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
+                    <button onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
             </div>
         );

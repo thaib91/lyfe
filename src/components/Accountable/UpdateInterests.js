@@ -24,9 +24,9 @@ export default class UpdateInterests extends Component {
         return (
             <div className='edit-interests'>
 
-                <input className='edit-input-box' onChange={(e) => this.handleChange('editInput', e.target.value)} value={this.state.editInput} />
                 <div>
-                    <button onClick={() => this.updateInterests()}>Edit</button>
+                    <input className='edit-input-box' onChange={(e) => this.handleChange('editInput', e.target.value)} value={this.state.editInput} />
+                    <button className='edit-interest-btn' onClick={() => this.updateInterests()}>Edit</button>
                 </div>
             </div>
         )

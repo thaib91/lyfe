@@ -39,6 +39,7 @@ app.put('/api/user/update_interests/:interests_id', authMiddle.usersOnly, ic.upd
 app.get('/api/user/get_goals', gc.getGoals);
 app.post('/api/user/goals', gc.createGoals);
 app.delete('/api/user/deleteGoals/:goal_id', gc.deleteGoal);
+app.put('/api/user/updateGoal/:goal_id', gc.updateGoal);
 
 
 massive(CONNECTION_PORT).then(connection => {
