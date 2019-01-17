@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getUserData } from '../../ducks/reducer';
 import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import UpdateInterests from './UpdateInterests';
 
 
 
@@ -13,6 +14,7 @@ class Accountable extends Component {
         super();
         this.state = {
             userInput: '',
+            editInput: '',
             userInterests: [],
             userGoals: [],
             userFriends: []
@@ -59,9 +61,8 @@ class Accountable extends Component {
     //create interests using id from sessions which is then updated to redux. 
     createInterests = async () => {
         // const {id} = this.props.user;
-        const {userInput, userInterests} = this.state;
-        const res = await axios.post('/api/user/interests/', {userInput})
-        console.log(res.data)
+        const { userInput, userInterests } = this.state;
+        const res = await axios.post('/api/user/interests/', { userInput })
         this.setState({
             ...userInterests,
             userInterests: res.data,
@@ -77,19 +78,34 @@ class Accountable extends Component {
         })
     }
 
+    updateInterests = async (id, editInput) => {
 
+        // console.log(id)
+        const { userInterests } = this.state;
+        const res = await axios.put(`/api/user/update_interests/${id}`, { editInput })
+        this.setState({
+            ...userInterests,
+            userInterests: res.data,
+            editInput: ''
+        })
+    }
+
+    // this.state.userInterests[0].interests_id
     render() {
         // console.log(this.props);
         const { id, email, username } = this.props.user;
         const { userInterests } = this.state;
-        console.log(userInterests)
 
         let interests = userInterests.map((interest, i) => {
             return (
                 <div key={i}>
-                {interest.user_interests}
-                <button onClick={()=>this.deleteInterests(interest.interests_id)}></button>
-
+                    {interest.user_interests}
+                    <UpdateInterests
+                        update={this.updateInterests}
+                        text={this.state.editInput}
+                        id={interest.interests_id}
+                    />
+                    <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete</button>
                 </div>
             )
         })
@@ -100,15 +116,17 @@ class Accountable extends Component {
                 <p>{id}</p>
                 <p>{email}</p>
                 <div>
-                <div>{interests}</div>
+                    <div>{interests}</div>
+
+
                 </div>
-                <input onChange={(e)=>this.handleChange('userInput', e.target.value)} value={this.state.userInput}/>
-                <button onClick={()=>{this.createInterests()}}>Add</button>
+                <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
+                <button onClick={() => { this.createInterests() }}>Add</button>
             </div>
-            );
-        };
+        );
     };
-    
-    const mapStateToProps = (reduxState) => reduxState;
-    
-export default connect(mapStateToProps, {getUserData})(withRouter(Accountable));
+};
+
+const mapStateToProps = (reduxState) => reduxState;
+
+export default connect(mapStateToProps, { getUserData })(withRouter(Accountable));

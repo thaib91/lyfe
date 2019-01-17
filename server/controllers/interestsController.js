@@ -27,5 +27,22 @@ module.exports = {
             let deleteUserInterests = await db.delete_interests({ interests_id, id });
             res.status(200).send(deleteUserInterests)
         }
+    },
+
+    updateInterests: async (req, res) => {
+        const db = req.app.get('db');
+        const { interests_id } = req.params;
+        const { editInput } = req.body;
+        const { id } = req.session.user;
+        console.log(req.params)
+        console.log(req.session.user)
+        console.log(req.body)
+        if (!id) {
+            res.status(401).send('Not Logged In')
+        } else {
+            let updateUserInterests = await db.update_interests({ user_interests: editInput, interests_id, user_id: id });
+            res.status(200).send(updateUserInterests)
+        }
+
     }
 }
