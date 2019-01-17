@@ -47,10 +47,10 @@ class Accountable extends Component {
             })
         }
         this.getInterests();
-        this.getData();
+        this.getGoals();
     }
     // generic get to get from all end points
-    getData = async () => {
+    getGoals = async () => {
         const res = await axios.get(`/api/user/get_goals/`)
         this.setState({
             userGoals: res.data,
@@ -61,9 +61,15 @@ class Accountable extends Component {
         const {goalInput} = this.state;
         const res = await axios.post(`/api/user/goals`, {goalInput});
         this.setState({
-            // ...userGoals,
             userGoals: res.data,
-            userInput: ''
+            goalInput: ''
+        })
+    }
+
+    deleteGoals = async (id) => {
+        const res = await axios.delete(`/api/user/deleteGoals/${id}`)
+        this.setState({
+            userGoals: res.data
         })
     }
 
@@ -116,15 +122,14 @@ class Accountable extends Component {
         const { userInterests, userGoals } = this.state;
 
         let goals = userGoals.map((goal, i) => {
-            console.log(goal)
             return (
                 <div key={i}>
                     {goal.goal}
-                    {/* <Goal
-                        createGoal={this.createGoals}
-                        goalText={this.state.userInput}
-                        // id={goal.goal_id}
-                    /> */}
+                    <Goal 
+                        deleteGoal={this.deleteGoals}
+                        id={goal.goal_id}
+                    />
+
 
 
 
@@ -168,7 +173,7 @@ class Accountable extends Component {
                 <button className='goal-button' onClick={()=>this.createGoals()}>Create Goal</button>
 
                 <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
-                <button onClick={() => { this.createInterests() }}>Add</button>
+                <button onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
             </div>
         );

@@ -19,15 +19,18 @@ export default class Goal extends Component {
         })
     }
 
-    createGoals() {
-        this.props.createGoal(this.state.userInput)
-        this.setState({ userInput: '' })
+    deleteUserGoals(){
+        this.props.deleteGoal(this.props.id)
     }
 
     render() {
         return (
             <div className='goal-page'>
+            <div>
+                <button className='delete-goal-btn'
+                    onClick={()=>{this.deleteUserGoals()}}>Delete Goal</button>
 
+            </div>
 
             </div>
         )
