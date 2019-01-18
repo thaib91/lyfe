@@ -10,7 +10,7 @@ module.exports = {
 
     createGoals: async (req, res) => {
         const db = req.app.get('db');
-        const { goalInput } = req.body;
+        const { goalInput} = req.body;
         const { id } = req.session.user;
         if (!id) {
             res.status(401).send('Not Logged In')

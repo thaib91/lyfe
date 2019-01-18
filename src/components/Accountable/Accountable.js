@@ -63,7 +63,8 @@ class Accountable extends Component {
         const res = await axios.post(`/api/user/goals`, { goalInput });
         this.setState({
             userGoals: res.data,
-            goalInput: ''
+            goalInput: '',
+            dateInput: ''
         })
     }
 
@@ -182,6 +183,7 @@ class Accountable extends Component {
 
                 </div >
                 <div className='create-buttons'>
+                     {/* <input className='date-input' onChange={(e) => this.handleChange('dateInput', e.target.value)} value={this.state.dateInput} /> */}
                     <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
                     <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
