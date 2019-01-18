@@ -26,13 +26,14 @@ app.use(session({
 
 //TWILIO
 
-app.post('/sms', mc.respondText)
+// app.post('/sms', mc.respondText)
+app.get('/sms', mc.getText)
 
 
 //TWILIO SERVER ON 1337 to link send/receive
-http.createServer(app).listen(1337, () => {
-    console.log('Express server listening on port 1337');
-});
+// http.createServer(app).listen(1337, () => {
+//     console.log('Express server listening on port 1337');
+// });
 
 
 

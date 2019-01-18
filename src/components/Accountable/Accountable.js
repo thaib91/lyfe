@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import UpdateInterests from './UpdateInterests';
 import Goal from './Goal/Goal'
 import './Accountable.scss'
+import Messenger from '../../Messenger/Messenger'
 
 
 class Accountable extends Component {
@@ -179,7 +180,7 @@ class Accountable extends Component {
                 <div>
                     <div>{interests}</div>
                     <div>{goals}</div>
-
+                <Messenger />
 
                 </div >
                 <div className='create-buttons'>

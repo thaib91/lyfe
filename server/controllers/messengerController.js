@@ -1,21 +1,12 @@
-const twilio = require('twilio');
+// const twilio = require('twilio');
 require('dotenv').config();
-const {TWILIO_SID, TWILIO_AUTH} = process.env'
+const {TWILIO_SID, TWILIO_AUTH} = process.env;
 // Twilio
 
 const client = require('twilio')(TWILIO_SID, TWILIO_AUTH);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const cors = require('cors')
 
-
-client.messages
-  .create({
-     body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-     from: '+12093539552',
-     to: '+12099851698'
-   })
-  .then(message => console.log(message.sid))
-  .done();
 
 
   module.exports = {
@@ -27,4 +18,17 @@ client.messages
         res.writeHead(200, {'Content-Type': 'text/xml'});
         res.end(twiml.toString());
       },
+
+      getText: (req, res) => {
+        const {recipient, text} = req.query;
+        client.messages
+        .create({
+           body: text,
+           from: '+12093539552',
+           to: '+1' + recipient
+         })
+        .then(message => console.log(message.body))
+        .done()
+      } 
+     
   }
