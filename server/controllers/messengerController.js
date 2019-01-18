@@ -1,8 +1,9 @@
 const twilio = require('twilio');
+require('dotenv').config();
+const {TWILIO_SID, TWILIO_AUTH} = process.env'
 // Twilio
-const accountSid = 'AC0044da7804535ff2b111f795020edb4a';
-const authToken = '4795f3896872c2ca73911fa5d72a24fd';
-const client = require('twilio')(accountSid, authToken);
+
+const client = require('twilio')(TWILIO_SID, TWILIO_AUTH);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const cors = require('cors')
 
