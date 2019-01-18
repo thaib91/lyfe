@@ -10,8 +10,8 @@ import './Accountable.scss'
 
 
 class Accountable extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             userInput: '',
             editInput: '',
@@ -63,8 +63,8 @@ class Accountable extends Component {
         const res = await axios.post(`/api/user/goals`, { goalInput });
         this.setState({
             userGoals: res.data,
-            goalInput: '',
-            dateInput: ''
+            goalInput: ''
+            // dateInput: ''
         })
     }
 

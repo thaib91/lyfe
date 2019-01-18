@@ -8,7 +8,8 @@ const { SERVER_PORT, CONNECTION_PORT, SECRET } = process.env;
 const lc = require('./controllers/loginController');
 const uc = require('./controllers/userController');
 const ic = require('./controllers/interestsController');
-const gc = require('./controllers/goalController')
+const gc = require('./controllers/goalController');
+const sc = require('./controllers/skillsController')
 //middleware to make sure user is logged in before they can create posts
 const authMiddle = require('./middleware/authMiddleware')
 
@@ -40,6 +41,12 @@ app.get('/api/user/get_goals', gc.getGoals);
 app.post('/api/user/goals', gc.createGoals);
 app.delete('/api/user/deleteGoals/:goal_id', gc.deleteGoal);
 app.put('/api/user/updateGoal/:goal_id', gc.updateGoal);
+
+//getSkills // skillsController
+app.get('/api/get_skills', sc.getSkills);
+app.get('/api/get_my_skills', sc.getMySkills);
+app.post('/api/create_skills', sc.createSkills);
+app.delete('/api/delete_skills/:skills_id', sc.deleteSkills)
 
 
 massive(CONNECTION_PORT).then(connection => {

@@ -1,0 +1,51 @@
+.skillshare-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: azure;
+    // font-size: 100px;
+}
+
+.skillshare-map{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-sizing: border-box;
+}
+
+.create-skillshare{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    height: 270px;
+    width: 500px;
+    background-color: violet;
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    font-family: inherit;
+    font-size: 12px;
+    line-height: inherit;
+    background-color: greenyellow;
+    height: 8vh;
+    width: 15vw;
+    display: flex;
+}
+
+.post-btn{
+font-family: inherit;
+font-size: 12px;
+line-height: inherit;
+background-color: turquoise;
+height: 8vh;
+width: 15vw;
+display: flex;
+}
