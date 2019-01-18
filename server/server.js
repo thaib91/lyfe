@@ -1,7 +1,9 @@
 const express = require('express');
 require('dotenv').config();
 const massive = require('massive');
+const http = require('http');
 const session = require('express-session');
+
 const { SERVER_PORT, CONNECTION_PORT, SECRET } = process.env;
 
 //controllers
@@ -9,7 +11,8 @@ const lc = require('./controllers/loginController');
 const uc = require('./controllers/userController');
 const ic = require('./controllers/interestsController');
 const gc = require('./controllers/goalController');
-const sc = require('./controllers/skillsController')
+const sc = require('./controllers/skillsController');
+const mc = require('./controllers/messengerController');
 //middleware to make sure user is logged in before they can create posts
 const authMiddle = require('./middleware/authMiddleware')
 
@@ -20,6 +23,18 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+//TWILIO
+
+app.post('/sms', mc.respondText)
+
+
+//TWILIO SERVER ON 1337 to link send/receive
+http.createServer(app).listen(1337, () => {
+    console.log('Express server listening on port 1337');
+});
+
+
 
 //endpoints for login/registration
 app.post('/auth/register', lc.register);
