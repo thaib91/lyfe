@@ -47,6 +47,7 @@ app.get('/api/get_skills', sc.getSkills);
 app.get('/api/get_my_skills', sc.getMySkills);
 app.post('/api/create_skills', sc.createSkills);
 app.delete('/api/delete_skills/:skills_id', sc.deleteSkills)
+app.put('/api/update_skills/:skills_id', sc.updateSkills)
 
 
 massive(CONNECTION_PORT).then(connection => {

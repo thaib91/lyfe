@@ -5,6 +5,7 @@ import { getUserData } from '../../ducks/reducer';
 import { withRouter } from 'react-router-dom';
 // import Swal from 'sweetalert2';
 import './Skillshare.scss'
+import UpdateSkills from './UpdateSkills';
 
 class Skillshare extends Component {
     constructor(props) {
@@ -63,6 +64,18 @@ class Skillshare extends Component {
         })
     }
 
+    updateSkills = async (id, body) => {
+        const res = await axios.put(`/api/update_skills/${id}`, { body })
+        this.setState({
+            skills_posts: res.data.skills_posts,
+            years: res.data.years,
+            description: res.data.description,
+            img: res.data.img,
+        })
+        window.location.reload(); //command to refresh page
+        
+    }
+
     // getSkills = async () => {
     //     const res = await axios.get(`/api/get_skills`)
     //     this.setState({
@@ -76,11 +89,24 @@ class Skillshare extends Component {
         const { userSkills, mySkills } = this.state;
         let mapMySkills = mySkills.map((mySkill, i) => {
             return (
-                <div>
+                <div key={i}>
                     {mySkill.skills_posts}
                     {mySkill.description}
                     {mySkill.years}
-                    <button onClick={()=>{this.deleteSkills(mySkill.skills_id)}}>Delete</button>
+                    <button onClick={() => { this.deleteSkills(mySkill.skills_id) }}>Delete</button>
+
+                    <div className='update_skills'>
+                       
+                        <UpdateSkills
+                        updateSkills={this.updateSkills}
+                        skills_posts={this.skills_posts}
+                        years={this.years}
+                        description={this.description}
+                        img={this.img}
+                        id={mySkill.skills_id}
+                        />
+
+                    </div>
                 </div>
             )
         })
