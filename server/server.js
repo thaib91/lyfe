@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const massive = require('massive');
-const http = require('http');
+// const http = require('http');
 const session = require('express-session');
 
 const { SERVER_PORT, CONNECTION_PORT, SECRET } = process.env;

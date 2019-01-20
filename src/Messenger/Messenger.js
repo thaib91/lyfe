@@ -22,10 +22,10 @@ export default class Messenger extends Component {
      sendText = async() => {
 
         const {value: text} = await Swal({
-            title: 'Send a Text to your Friend!',
+            title: 'Send a Text To A LYFER!',
             input: 'textarea',
-            inputPlaceholder: 'Motivate A Stranger To Be Accountable For Lyfe',
-            showCancelButton: true
+            inputPlaceholder: 'Motivate A LYFER To Be Accountable! Maybe One Will Motivate You!',
+            showConfirmButton: true
           })
           
           if (text) {

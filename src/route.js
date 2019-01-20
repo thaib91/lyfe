@@ -6,8 +6,8 @@ import Skillshare from './components/Skillshare/Skillshare';
 
 export default (
     <Switch>
-        <Route exact path='/'/>
-        <Route  path='/landing' component={Landing}/>
+        {/* <Route exact path='/'/> */}
+        <Route  exact path='/' component={Landing}/>
         <Route  path='/accountable' component={Accountable}/>
         <Route  path='/skillshare' component={Skillshare}/>
     </Switch>

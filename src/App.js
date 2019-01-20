@@ -4,8 +4,10 @@ import SideDrawer from './components/NavBar/SideDrawer/SideDrawer';
 import Backdrop from './components/NavBar/Backdrop/Backdrop';
 import route from './route';
 import { withRouter } from 'react-router-dom';
+
 // import Modal from './components/Dashboard/Modal';
 
+import './reset.css'
 import './App.scss';
 
 class App extends Component {

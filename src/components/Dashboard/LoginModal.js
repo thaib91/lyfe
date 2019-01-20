@@ -60,7 +60,7 @@ class LoginModal extends Component {
 
             <p className="modal-button">
             
-            <button onClick={this.toggleModal}>Login/Register</button>
+            <button className='login-button' onClick={this.toggleModal}>Login/Register</button>
             </p>
 
 

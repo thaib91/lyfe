@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom';
 // import Swal from 'sweetalert2';
 import './Skillshare.scss'
 import UpdateSkills from './UpdateSkills';
+import { Modal, Button } from 'react-bootstrap';
+// import LoginModal from '../Dashboard/LoginModal'
 
 class Skillshare extends Component {
     constructor(props) {
@@ -16,7 +18,8 @@ class Skillshare extends Component {
             description: '',
             img: '',
             userSkills: [],
-            mySkills: []
+            mySkills: [],
+            open: false
         }
     }
 
@@ -25,6 +28,10 @@ class Skillshare extends Component {
             [prop]: value
         })
     }
+
+    toggleModal = () => {
+        this.setState({ open: !this.state.open })
+    };
 
     async componentDidMount() {
         const res = await axios.get(`/api/get_skills`)
@@ -73,7 +80,7 @@ class Skillshare extends Component {
             img: res.data.img,
         })
         window.location.reload(); //command to refresh page
-        
+
     }
 
     // getSkills = async () => {
@@ -90,20 +97,21 @@ class Skillshare extends Component {
         let mapMySkills = mySkills.map((mySkill, i) => {
             return (
                 <div key={i}>
-                    {mySkill.skills_posts}
-                    {mySkill.description}
-                    {mySkill.years}
-                    <button onClick={() => { this.deleteSkills(mySkill.skills_id) }}>Delete</button>
 
                     <div className='update_skills'>
-                       
+
+                        {mySkill.skills_posts}
+                        {mySkill.description}
+                        {mySkill.years}
+                        <button onClick={() => { this.deleteSkills(mySkill.skills_id) }}>Delete</button>
+
                         <UpdateSkills
-                        updateSkills={this.updateSkills}
-                        skills_posts={this.skills_posts}
-                        years={this.years}
-                        description={this.description}
-                        img={this.img}
-                        id={mySkill.skills_id}
+                            updateSkills={this.updateSkills}
+                            skills_posts={this.skills_posts}
+                            years={this.years}
+                            description={this.description}
+                            img={this.img}
+                            id={mySkill.skills_id}
                         />
 
                     </div>
@@ -126,14 +134,42 @@ class Skillshare extends Component {
         return (
             <div className='skillshare-page'>Skillshare
             {mapSkills}
-                <div className='create-skillshare'>
-                    <input onChange={(e) => { this.handleChange('skills_posts', e.target.value) }} placeholder='skills-posts' value={this.state.skills_posts} />
-                    <input onChange={(e) => { this.handleChange('years', e.target.value) }} placeholder='years' value={this.state.years} />
-                    <input onChange={(e) => { this.handleChange('description', e.target.value) }} placeholder='description' value={this.state.description} />
-                    <input onChange={(e) => { this.handleChange('img', e.target.value) }} placeholder='img' value={this.state.img} />
-                    <button className='post-btn' onClick={() => { this.createSkills() }}>Create Post</button>
-                    {mapMySkills}
-                </div>
+            {mapMySkills}
+            
+
+                <p className='modal-btn'>
+                    <button onClick={this.toggleModal}>Want To Share Your Skill?</button>
+                </p>
+                <p>
+
+                    {/* <LoginModal/> */}
+                </p>
+
+                <Modal
+                    {...this.props}
+                    show={this.state.open}
+                    onHide={this.toggleModal}
+                    dialogClassName="custom-modal"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-lg">
+                            Create A New Skill To Share!
+                         </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className='create-skillshare'>
+                            <input onChange={(e) => { this.handleChange('skills_posts', e.target.value) }} placeholder='skills-posts' value={this.state.skills_posts} />
+                            <input onChange={(e) => { this.handleChange('years', e.target.value) }} placeholder='years' value={this.state.years} />
+                            <input onChange={(e) => { this.handleChange('description', e.target.value) }} placeholder='description' value={this.state.description} />
+                            <input onChange={(e) => { this.handleChange('img', e.target.value) }} placeholder='img' value={this.state.img} />
+                            {/* <button className='post-btn' onClick={() => { this.createSkills() }}>Create Post</button> */}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button className='post-btn' onClick={() => { this.createSkills() }}>Create New Post</Button>
+                        <Button onClick={this.handleHide}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
 
             </div>
 
