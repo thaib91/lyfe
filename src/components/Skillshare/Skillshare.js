@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import './Skillshare.scss'
 import UpdateSkills from './UpdateSkills';
 import { Modal, Button } from 'react-bootstrap';
+import LikeToggle from './LikeToggle'
 // import LoginModal from '../Dashboard/LoginModal'
 
 class Skillshare extends Component {
@@ -128,6 +129,7 @@ class Skillshare extends Component {
                     {skill.skills_posts}
                     {skill.description}
                     {skill.years}
+                    <LikeToggle />
                 </div>
             )
         })

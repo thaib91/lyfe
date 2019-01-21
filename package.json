@@ -7,15 +7,20 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
+    "cron": "^1.6.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
     "isotope-layout": "^3.0.6",
     "massive": "^5.7.2",
+    "node-cron": "^2.0.3",
     "node-sass": "^4.11.0",
+    "nodemailer": "^5.1.1",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
+    "react-facebook": "^6.0.15",
     "react-redux": "^6.0.0",
     "react-responsive-modal": "^3.5.1",
     "react-router-dom": "^4.3.1",
@@ -23,7 +28,8 @@
     "react-switch": "^3.0.4",
     "redux": "^4.0.1",
     "sweetalert2": "^7.33.1",
-    "twilio": "^3.27.1"
+    "twilio": "^3.27.1",
+    "xoauth2": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

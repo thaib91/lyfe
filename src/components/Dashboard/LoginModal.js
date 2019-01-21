@@ -58,10 +58,10 @@ class LoginModal extends Component {
 
         <div className='landing-page'>
 
-            <p className="modal-button">
+            <div className="modal-button">
             
             <button className='login-button' onClick={this.toggleModal}>Login/Register</button>
-            </p>
+            </div>
 
 
             <div className="static-modal">
@@ -73,14 +73,14 @@ class LoginModal extends Component {
 
                     <Modal.Body>
 
-                        <p className='email-box'>
+                        <div className='email-box'>
                             <span>E-mail: </span>
                             <input onChange={(e) => this.handleChange('email', e.target.value)} type='text' />
-                        </p>
-                        <p className='password-box'>
+                        </div>
+                        <div className='password-box'>
                             <span>Password: </span>
                             <input onChange={(e) => this.handleChange('password', e.target.value)} type='text' />
-                        </p>
+                        </div>
 
                     </Modal.Body>
 

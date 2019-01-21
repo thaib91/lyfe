@@ -28,6 +28,7 @@ app.use(session({
 
 // app.post('/sms', mc.respondText)
 app.get('/sms', mc.getText)
+app.get('/email', mc.getEmail)
 
 
 //TWILIO SERVER ON 1337 to link send/receive

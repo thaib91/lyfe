@@ -34,8 +34,20 @@ export default class Messenger extends Component {
 
     }
 
+    sendEmail = async() => {
 
+        const {value: text} = await Swal({
+            title: 'Send an Email To A LYFER!',
+            input: 'textarea',
+            inputPlaceholder: 'Motivate A LYFER To Be Accountable! Maybe One Will Motivate You!',
+            showConfirmButton: true
+          })
+          
+          if (text) {
+            axios.get(`/email?text=${text}`)
+          }
 
+    }
 
 
     render() {
@@ -44,6 +56,8 @@ export default class Messenger extends Component {
                 {/* <input className='recipient' onChange={(e)=>{this.handleChange('recipient', e.target.value)}} placeholder='recipient'/>
                 <input className='text' onChange={(e)=>{this.handleChange('text', e.target.value)}} placeholder='text'/> */}
                 <Button onClick={()=>{this.sendText()}}> Text Message! </Button>
+                <Button onClick={()=>{this.sendEmail()}}> Email! </Button>
+
             </div>
         )
     }
