@@ -4,7 +4,7 @@ const massive = require('massive');
 // const http = require('http');
 const session = require('express-session');
 
-const { SERVER_PORT, CONNECTION_PORT, SECRET } = process.env;
+const { SERVER_PORT, CONNECTION_PORT, SECRET, NODE_ENV} = process.env;
 
 //controllers
 const lc = require('./controllers/loginController');
@@ -14,7 +14,7 @@ const gc = require('./controllers/goalController');
 const sc = require('./controllers/skillsController');
 const mc = require('./controllers/messengerController');
 //middleware to make sure user is logged in before they can create posts
-const authMiddle = require('./middleware/authMiddleware')
+const authMiddle = require('./middleware/authMiddleware');
 
 const app = express();
 app.use(express.json());
@@ -23,6 +23,18 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+// DEVELOPMENT USER
+app.use(async (req,res,next)=>{
+    if(NODE_ENV === 'development'){
+        const db = req.app.get('db')
+        const userData = await db.set_data()
+        req.session.user = userData[0]
+        next()
+    }else{
+        next()
+    }
+})
 
 //TWILIO
 
