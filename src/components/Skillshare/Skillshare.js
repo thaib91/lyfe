@@ -56,6 +56,7 @@ class Skillshare extends Component {
             description: '',
             img: ''
         })
+        this.getMySkills();
     }
 
     getMySkills = async () => {
@@ -80,7 +81,7 @@ class Skillshare extends Component {
             description: res.data.description,
             img: res.data.img,
         })
-        window.location.reload(); //command to refresh page
+        this.getMySkills();
 
     }
 

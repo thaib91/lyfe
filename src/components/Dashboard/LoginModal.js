@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import './LoginModal.scss';
-// import Toolbar from '../NavBar/Toolbar/Toolbar';
+import Toolbar from '../NavBar/Toolbar/Toolbar';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
@@ -55,13 +55,16 @@ class LoginModal extends Component {
 
     render() {
         return (
+   
 
         <div className='landing-page'>
-
-            <div className="modal-button">
+         <Toolbar 
+                toggle={this.toggleModal}
+            />
+            {/* <div className="modal-button"> */}
             
-            <button className='login-button' onClick={this.toggleModal}>Login/Register</button>
-            </div>
+            {/* <button className='login-button' onClick={this.toggleModal}>Login/Register</button> */}
+            {/* </div> */}
 
 
             <div className="static-modal">

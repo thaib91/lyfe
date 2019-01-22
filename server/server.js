@@ -1,10 +1,11 @@
+
 const express = require('express');
 require('dotenv').config();
-const massive = require('massive');
-// const http = require('http');
-const session = require('express-session');
-
 const { SERVER_PORT, CONNECTION_PORT, SECRET, NODE_ENV} = process.env;
+const massive = require('massive');
+const session = require('express-session');
+const socket = require('socket.io');
+
 
 //controllers
 const lc = require('./controllers/loginController');
@@ -23,6 +24,38 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+const io = socket(app.listen(SERVER_PORT, ()=>console.log(`Sockets listening on port ${SERVER_PORT}`)))
+
+//Sockets Serverside implementation for global chatroom using Socket.io
+
+io.on('connection', socket =>{
+    console.log('socket connected')
+    socket.on('emit message to general', data =>{
+        console.log('general socket hit: emit')
+        socket.emit('generate general response', data)
+    })
+    socket.on('broadcast message to general', data => {
+        console.log('general socket hit: broadcast', data)
+        socket.broadcast.emit('generate general response', data);
+    });
+    socket.on('blast message to general', data => {
+        console.log(data)
+        console.log('general socket hit: blast')
+        io.sockets.emit('generate general response', data)
+    });
+
+    //userTyping Notification
+    socket.on('user is typing', data => {
+        // console.log(data)
+        socket.broadcast.emit('user is typing', data)
+    })
+    socket.on('user not typing', data => {
+        socket.broadcast.emit('user is not typing', data)
+    })
+})
+
+
 
 // DEVELOPMENT USER
 app.use(async (req,res,next)=>{
@@ -81,7 +114,8 @@ app.put('/api/update_skills/:skills_id', sc.updateSkills)
 
 massive(CONNECTION_PORT).then(connection => {
     app.set('db', connection)
-    app.listen(SERVER_PORT, () => {
-        console.log(`The Personal Project is over ${SERVER_PORT} hours!`)
-    })
+    // app.listen(SERVER_PORT, () => {
+    //     console.log(`The Personal Project is over ${SERVER_PORT} hours!`)
+    // }) //not necessary, only for develper use. 
 }).catch(err => console.log(err))
+

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FacebookProvider, Like } from 'react-facebook';
+// import { FacebookProvider, Like } from 'react-facebook';
 import { Button } from 'react-bootstrap';
 
 export default class UpdateSkills extends Component {

@@ -3,7 +3,7 @@ import './Toolbar.scss';
 import { Link } from 'react-router-dom';
 // import Modal from '../../Dashboard/LoginModal';
 import DrawerToggle from '../SideDrawer/DrawerToggle';
-// import LoginModal from '../../Dashboard/Modal'
+import LoginModal from '../../Dashboard/LoginModal'
 
 
 
@@ -21,9 +21,18 @@ const toolbar = props => (
             <div className='toolbar_navigation-items'>
 
                 <ul>
-                    <a href='http://localhost:4343/auth/logout'><li>Logout</li></a>
-                    <Link to='/accountable'><li>Accountable</li></Link>
+                      <Link to='/accountable'><li>Accountable</li></Link>
                     <Link to='/skillshare'><li>Skillshare</li></Link>
+                    {
+                        props.toggle ? (
+                            <a> <li onClick={() => props.toggle()}>Login</li> </a>
+                        ) : (   
+                         
+                                <a href='http://localhost:4343/auth/logout'>  <li >Logout</li> </a>
+
+                            )
+                    }
+
                 </ul>
             </div>
 

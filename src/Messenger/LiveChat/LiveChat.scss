@@ -1,0 +1,42 @@
+.live-chat{
+    position: fixed;
+    height: 300px;
+    width: 150px;
+    border: 2px solid black;
+    margin: 10px;
+    right: 5px;
+    bottom: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: center; */
+    align-items: center;
+  
+}
+
+.input-chat {
+    height: 5vh;
+    width: 18vh;
+    margin-bottom: 15px;
+}
+
+.chat-button{
+    border-radius: 30px;
+}
+// .live-chat {
+//     display: flex;
+//     bottom: 0px;
+//     flex-direction: column;
+//     margin: 17px;
+//     position: fixed;
+//     right: 0px;
+//     z-index: 9999;
+//     height: 60%;
+//     width: 40%;
+// }
+
+// .rcw-widget-container {
+//     height: 58%;
+//     width: 40%;
+//     margin: 2%;
+// }
+
