@@ -17,8 +17,8 @@ export default class LiveChat extends Component {
         this.socket = io.connect(":4343");
         this.socket.on('generate general response', data => this.generalResponse(data));
         this.socket.on('generate room response', data => this.roomResponse(data));
-        this.socket.on('user is typing', data => this.setUserTyping(data));
-        this.socket.on('user not typing', data => this.removeUserTyping(data));
+        // this.socket.on('user is typing', data => this.setUserTyping(data));
+        // this.socket.on('user not typing', data => this.removeUserTyping(data));
     }
 
     componentDidMount() {
@@ -39,13 +39,13 @@ export default class LiveChat extends Component {
     //     console.log(data)
     // }
 
-    setUserTyping(data) {
-        if (data.room === this.props.room) {
-            this.setState({ userTyping: false })
-        } else if (!data.room && !this.props.room) {
-            this.setState({ userTyping: true })
-        }
-    }
+    // setUserTyping(data) {
+    //     if (data.room === this.props.room) {
+    //         this.setState({ userTyping: false })
+    //     } else if (!data.room && !this.props.room) {
+    //         this.setState({ userTyping: true })
+    //     }
+    // }
 
     // removeUserTyping(data) {
     //     if (data.room === this.props.room) {
@@ -109,9 +109,9 @@ export default class LiveChat extends Component {
                 <button className='chat-button' onClick={() => { this.sendMessage('blast', this.state.message) }}>Send</button>
                 <hr />
                 <div className='display-messages'>{messages}</div>
-                {this.state.userTyping && (
+                {/* {this.state.userTyping && (
                     <p className='user-typing'>Another User is Typing</p>
-                )}
+                )} */}
 
             </div>
         )

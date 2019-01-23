@@ -65,7 +65,7 @@ class LoginModal extends Component {
             
             {/* <button className='login-button' onClick={this.toggleModal}>Login/Register</button> */}
             {/* </div> */}
-
+   
 
             <div className="static-modal">
                 <Modal show={this.state.open} onHide={this.toggleModal}>
