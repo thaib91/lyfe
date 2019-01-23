@@ -1,5 +1,36 @@
-img {
-    height: 100vh;
-    width: 100vw;
+@import url('https://fonts.googleapis.com/css?family=Sarabun');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+$main-font:'Sarabun', sans-serif;
+
+
+.landing-main{
+    background-image: url('https://i2.wp.com/ptech-llc.com/wp-content/uploads/2016/07/landing-background-1.jpg?ssl=1');
+    background-size: cover;
+    background-repeat: none;
+}
+
+.landing-header{
+    // height: 10vh;
+    // width: 10vh;
+    position: fixed;
+    // left: vh;
+    top: 13vh;
+    left: 42vh;
+    width: 37%;
+    font-family:'Noto Sans JP', sans-serif;
+    font-size: 6vh;
 
 }
+
+.rocket-ship{
+    height: 42vh;
+    width: 46vh;
+    position: fixed;
+    left: 96vh;
+    top: 2vh;
+}
+
+// .jumbo{
+//     background: none;
+// }

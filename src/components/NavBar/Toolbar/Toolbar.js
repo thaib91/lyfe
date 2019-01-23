@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import Modal from '../../Dashboard/LoginModal';
 import DrawerToggle from '../SideDrawer/DrawerToggle';
 import LoginModal from '../../Dashboard/LoginModal'
+import LiveChat from '../../../Messenger/LiveChat/LiveChat'
 
 
 
@@ -21,7 +22,8 @@ const toolbar = props => (
             <div className='spacer'></div>
             <div className='toolbar_navigation-items'>
 
-                <ul>
+                <ul className='toolbar-navigation'>
+                    {/* <li><i className="far fa-comments fa-2x" onClick={()=>{this.toggleLiveChat()}}></i></li> */}
                       <Link to='/accountable'><li>Accountable</li></Link>
                     <Link to='/skillshare'><li>Skillshare</li></Link>
                     {

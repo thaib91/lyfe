@@ -23,6 +23,39 @@
 .chat-button{
     border-radius: 30px;
 }
+
+.live-chat-toggle{
+    display: flex;
+    // height: 30px;
+}
+
+.toggle-chat{
+    position: fixed;
+    width: 9vh;
+    height: 9vh;
+    right: 0;
+    bottom: 0;
+}
+
+i{
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    color:#B97A38;
+}
+
+// display: flex;
+// position: absolute;
+// flex-direction: row;
+// width: 30px;
+// /* width: 30px; */
+// /* height: auto; */
+// align-items: center;
+
+// .toggle-chat{
+//     height: 30px;
+//     width: 30px;
+// }
 // .live-chat {
 //     display: flex;
 //     bottom: 0px;

@@ -15,6 +15,7 @@ import './App.scss';
 class App extends Component {
   state = {
     sideDrawerOpen: false,
+    // liveChatOpen: false,
     rooms: [],
     room: ''
   }
@@ -52,6 +53,8 @@ class App extends Component {
 
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} close={this.drawerToggleClickHandler} />
+
+        
         <LiveChat/>
       {backdrop}
         {route}

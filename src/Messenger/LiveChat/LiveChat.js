@@ -3,6 +3,8 @@ import './LiveChat.scss'
 import io from 'socket.io-client';
 // import { MessageBox } from 'react-chat-elements';
 import 'react-chat-elements/dist/main.css';
+// import {} from 'font-awesome'
+import Toolbar from '../../components/NavBar/Toolbar/Toolbar'
 
 
 export default class LiveChat extends Component {
@@ -12,6 +14,7 @@ export default class LiveChat extends Component {
             messages: [],
             message: '',
             userTyping: false,
+            liveChatOpen: false
 
         };
         this.socket = io.connect(":4343");
@@ -32,6 +35,10 @@ export default class LiveChat extends Component {
             this.setState({ messages: [...this.state.messages, data.message] })
         }
         console.log(data)
+    }
+
+    toggleLiveChat=()=>{
+        this.setState({liveChatOpen: !this.state.liveChatOpen})
     }
 
     // roomResponse(data) {
@@ -94,7 +101,9 @@ export default class LiveChat extends Component {
             )
         })
         return (
-            <div className='live-chat'>
+            <div className='liveChatToggle'>
+
+            {this.state.liveChatOpen ? (<div  className='live-chat'>
 
                 <p>
                     {this.props.room ? `Room: ${this.props.room}` : 'Global Lobby'}
@@ -106,13 +115,18 @@ export default class LiveChat extends Component {
                         value={this.state.message}
                     />
                 </p>
-                <button className='chat-button' onClick={() => { this.sendMessage('blast', this.state.message) }}>Send</button>
+                <button className='send-button' onClick={() => { this.sendMessage('blast', this.state.message) }}>Send</button>
+                <button className='close-button' onClick={()=>{this.toggleLiveChat()}}>Close</button>
                 <hr />
                 <div className='display-messages'>{messages}</div>
                 {/* {this.state.userTyping && (
                     <p className='user-typing'>Another User is Typing</p>
                 )} */}
 
+            </div>) : (<div>
+                <i className="far fa-comments fa-2x" onClick={()=>{this.toggleLiveChat()}}></i>
+            </div>)
+        }
             </div>
         )
     }
