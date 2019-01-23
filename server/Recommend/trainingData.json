@@ -162,5 +162,33 @@
   {
     "text": "get a trainer",
     "category": "body"
+  },
+  {
+    "text": "learn to program",
+    "category": "brain"
+  },
+  {
+    "text": "get faster",
+    "category": "body"
+  },
+  {
+    "text": "get smarter",
+    "category": "brain"
+  },
+  {
+    "text": "math",
+    "category": "brain"
+  },
+  {
+    "text": "gym",
+    "category": "body"
+  },
+  {
+    "text": "technology",
+    "category": "brain"
+  },
+  {
+    "text": "learn web development",
+    "category": "brain"
   }
 ]

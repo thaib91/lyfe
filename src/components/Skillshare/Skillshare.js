@@ -38,9 +38,9 @@ class Skillshare extends Component {
     };
 
     async componentDidMount() {
-        // const res = await axios.get(`/api/get_skills`)
+        const res = await axios.get(`/api/get_skills`)
         // console.log(res.data);
-        // this.setState({ userSkills: res.data })
+        this.setState({ userSkills: res.data })
         this.getMySkills();
     }
 
@@ -113,9 +113,9 @@ class Skillshare extends Component {
                     userSkills:res.data
                 })
             }else{
-                const res = await axios.get(`/api/get_skills`)
-                // console.log(res.data);
-                this.setState({ userSkills: res.data })
+                // const res = await axios.get(`/api/get_skills`)
+                // // console.log(res.data);
+                // this.setState({ userSkills: res.data })
             }
         }
 

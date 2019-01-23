@@ -11,7 +11,7 @@ module.exports = {
     }));
     
     network.train(trainingData, {
-      iterations: 30
+      iterations: 35
     });
     const {text} = req.query;
     const output = network.run(text);
