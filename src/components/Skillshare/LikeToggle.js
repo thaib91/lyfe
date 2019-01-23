@@ -26,7 +26,6 @@ export default class UpdateSkills extends Component {
         return (
             <div className='like-toggle'>
 
-            <Button bsSize="xsmall">Enjoy this skill? Click to Like!</Button>
 
             </div>
         )

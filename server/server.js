@@ -14,6 +14,7 @@ const ic = require('./controllers/interestsController');
 const gc = require('./controllers/goalController');
 const sc = require('./controllers/skillsController');
 const mc = require('./controllers/messengerController');
+const rc = require('./Recommend/recommendController')
 //middleware to make sure user is logged in before they can create posts
 const authMiddle = require('./middleware/authMiddleware');
 
@@ -24,6 +25,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+// brain.js recommend engine
+app.get('/recommend', rc.recommendCategory)
+app.get('/brain', rc.getBrain)
+app.get('/body', rc.getBody)
+
 
 const io = socket(app.listen(SERVER_PORT, ()=>console.log(`Sockets listening on port ${SERVER_PORT}`)))
 

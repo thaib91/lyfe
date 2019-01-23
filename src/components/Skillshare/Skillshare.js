@@ -3,11 +3,13 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserData } from '../../ducks/reducer';
 import { withRouter } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import './Skillshare.scss'
 import UpdateSkills from './UpdateSkills';
+// import RecommendLanding from './RecommendLanding'
 import { Modal, Button } from 'react-bootstrap';
-import LikeToggle from './LikeToggle'
+import LikeToggle from './LikeToggle';
+
 // import LoginModal from '../Dashboard/LoginModal'
 
 class Skillshare extends Component {
@@ -20,7 +22,8 @@ class Skillshare extends Component {
             img: '',
             userSkills: [],
             mySkills: [],
-            open: false
+            open: false,
+            text: ''
         }
     }
 
@@ -35,8 +38,9 @@ class Skillshare extends Component {
     };
 
     async componentDidMount() {
-        const res = await axios.get(`/api/get_skills`)
-        this.setState({ userSkills: res.data })
+        // const res = await axios.get(`/api/get_skills`)
+        // console.log(res.data);
+        // this.setState({ userSkills: res.data })
         this.getMySkills();
     }
 
@@ -82,6 +86,38 @@ class Skillshare extends Component {
             img: res.data.img,
         })
         this.getMySkills();
+
+    }
+
+    getRecommendation = async () => {
+
+        const { value: text } = await Swal({
+            title: 'What is it?',
+            input: 'textarea',
+            inputPlaceholder: 'Ex. I want to learn how to code!',
+            showConfirmButton: true
+        })
+        if (text) {
+          const res = await axios.get(`/recommend?text=${text}`)
+            console.log(res.data)
+            if(res.data == 'brain'){
+                const res = await axios.get(`/brain`)
+                // console.log(res.data)
+                this.setState({
+                    userSkills: res.data
+                })
+            }else if(res.data == 'body'){
+                const res = await axios.get('/body')
+                console.log(res.data)
+                this.setState({
+                    userSkills:res.data
+                })
+            }else{
+                const res = await axios.get(`/api/get_skills`)
+                // console.log(res.data);
+                this.setState({ userSkills: res.data })
+            }
+        }
 
     }
 
@@ -137,14 +173,14 @@ class Skillshare extends Component {
         return (
             <div className='skillshare-page'>Skillshare
             {mapSkills}
-            {mapMySkills}
-            
+                {mapMySkills}
+
 
                 <p className='modal-btn'>
                     <button onClick={this.toggleModal}>Want To Share Your Skill?</button>
                 </p>
                 <p>
-
+                    <Button onClick={() => { this.getRecommendation() }}> What Are You Trying To Learn Or Train For?</Button>
                     {/* <LoginModal/> */}
                 </p>
 

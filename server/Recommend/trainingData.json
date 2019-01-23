@@ -1,103 +1,166 @@
 [
-    {
-      "text": "tried to learn code",
-      "category": "brain"
-    },
-    {
-      "text": "play the piano",
-      "category": "brain"
-    },
-    {
-      "text": "run more miles",
-      "category": "body"
-    },
-    {
-      "text": "wake up earlier",
-      "category": "body"
-    },
-    {
-      "text": "learned to debug",
-      "category": "brain"
-    },
-    {
-      "text": "tried playing an instrument",
-      "category": "brain"
-    },
-    {
-      "text": "worked out at the gym",
-      "category": "body"
-    },
-    {
-      "text": "tried to be more mature",
-      "category": "brain"
-    },
-    {
-      "text": "debugged my code",
-      "category": "brain"
-    },
-    {
-      "text": "attempted to play the flute",
-      "category": "brain"
-    },
-    {
-      "text": "swam more at school",
-      "category": "body"
-    },
-    {
-      "text": "tried to follow good habits",
-      "category": "brain"
-    },
-    {
-      "text": "coding languages",
-      "category": "brain"
-    },
-    {
-      "text": "training coach",
-      "category": "body"
-    },
-    {
-      "text": "personal life coach",
-      "category": "body"
-    },
-    {
-      "text": "Javascript",
-      "category": "brain"
-    },
-    {
-      "text": "biked this year",
-      "category": "body"
-    },
-    {
-        "text": "read more",
-        "category": "brain"
-    },
-    {
-        "text": "video games",
-        "category": "brain"
-    },
-    {
-        "text": "did scales on my piano",
-        "category": "brain"
-    },
-    {
-        "text": "arpeggio",
-        "category": "brain"
-    },
-    {
-        "text": "on my cellphone too long",
-        "category": "brain"
-    },
-    {
-        "text": "not be lazy",
-        "category": "brain"
-    },
-    {
-        "text": "be on computer less",
-        "category": "brain"
-    },
-    {
-        "text": "walk more",
-        "category": "body"
-    }
-  ]
-  
+  {
+    "text": "tried to learn code",
+    "category": "brain"
+  },
+  {
+    "text": "coding",
+    "category": "brain"
+  },
+  {
+    "text": "play the piano",
+    "category": "brain"
+  },
+  {
+    "text": "run more",
+    "category": "body"
+  },
+  {
+    "text": "learn javascript",
+    "category": "brain"
+  },
+  {
+    "text": "learn html",
+    "category": "brain"
+  },
+  {
+    "text": "learn code",
+    "category": "brain"
+  },
+  {
+    "text": "learn java",
+    "category": "brain"
+  },
+  {
+    "text": "learn python",
+    "category": "brain"
+  },
+  {
+    "text": "lose weight",
+    "category": "body"
+  },
+  {
+    "text": "learn css",
+    "category": "brain"
+  },
+  {
+    "text": "wake up earlier",
+    "category": "body"
+  },
+  {
+    "text": "learned to debug",
+    "category": "brain"
+  },
+  {
+    "text": "tried playing an instrument",
+    "category": "brain"
+  },
+  {
+    "text": "worked out at the gym",
+    "category": "body"
+  },
+  {
+    "text": "tried to be more mature",
+    "category": "brain"
+  },
+  {
+    "text": "debugged my code",
+    "category": "brain"
+  },
+  {
+    "text": "attempted to play the flute",
+    "category": "brain"
+  },
+  {
+    "text": "swam more at school",
+    "category": "body"
+  },
+  {
+    "text": "tried to follow good habits",
+    "category": "brain"
+  },
+  {
+    "text": "learn coding languages",
+    "category": "brain"
+  },
+  {
+    "text": " get a training coach",
+    "category": "body"
+  },
+  {
+    "text": "personal life coach",
+    "category": "body"
+  },
+  {
+    "text": "javascript",
+    "category": "brain"
+  },
+  {
+    "text": "biked this year",
+    "category": "body"
+  },
+  {
+    "text": "read more",
+    "category": "brain"
+  },
+  {
+    "text": "video games",
+    "category": "brain"
+  },
+  {
+    "text": "did scales on my piano",
+    "category": "brain"
+  },
+  {
+    "text": "arpeggio",
+    "category": "brain"
+  },
+  {
+    "text": "on my cellphone too long",
+    "category": "brain"
+  },
+  {
+    "text": "not be lazy",
+    "category": "brain"
+  },
+  {
+    "text": "be on computer less",
+    "category": "brain"
+  },
+  {
+    "text": "train to run",
+    "category": "body"
+  },
+  {
+    "text": "sweat",
+    "category": "body"
+  },
+  {
+    "text": "train to swim",
+    "category": "body"
+  },
+  {
+    "text": "lose weight",
+    "category": "body"
+  },
+  {
+    "text": "gain muscle",
+    "category": "body"
+  },
+  {
+    "text": "run more miles",
+    "category": "body"
+  },
+  {
+    "text": "feel healthy",
+    "category": "body"
+  },
+  {
+    "text": "train my body",
+    "category": "body"
+  },
+  {
+    "text": "get a trainer",
+    "category": "body"
+  }
+]

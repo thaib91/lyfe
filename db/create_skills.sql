@@ -4,7 +4,8 @@ user_id,
 skills_posts,
 years,
 description,
-img
+img,
+category
 )
 
 VALUES
@@ -13,7 +14,8 @@ ${user_id},
 ${skills_posts},
 ${years},
 ${description},
-${img}
+${img},
+${category}
 );
 
 SELECT * FROM skillshare;
