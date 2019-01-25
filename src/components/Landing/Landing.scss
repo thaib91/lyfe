@@ -32,6 +32,8 @@ $main-font:'Sarabun', sans-serif;
     background-color: grey;
 }
 
+
+
 div.modal-content{
     position: absolute;
     height: 57vh;
@@ -47,21 +49,53 @@ div.static-modal.modal{
 }
 
 .main-logo{
-    position: fixed;
+    position: absolute;
     height: 89vh;
-    width: 88vh;
+    width: 92vh;
     top: 11vh;
     left: 2vh;
 
 
 }
 
-.rocket-ship{
-    height: 49vh;
-    width: 50vh;
+// .rocket-ship{
+//     height: 49vh;
+//     width: 50vh;
+//     position: fixed;
+//     left: 86vh;
+//     top: 9vh;
+// }
+
+.landing-main {
+    position: absolute;
+    display: inline-block;
+    width: auto;
+    animation: walk 12s; 
+    animation-iteration-count: infinite;   
+    z-index: -1;
+    animation-timing-function: linear;
+}
+
+#popover-basic {
+    width: 150px;
+}
+
+.walk-background{
     position: fixed;
-    left: 86vh;
-    top: 9vh;
+    height: 100vh;
+    width: 100vw;
+    z-index: -2;
+    background-color: #F5F7FB;
+}
+
+
+@keyframes walk {
+    0% {
+        left: -55vw;
+    }
+    100%{
+        left: 85vw
+    }
 }
 
 // .jumbo{
