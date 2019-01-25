@@ -1,6 +1,11 @@
+$main-font:'Sarabun', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Sarabun');
 
 .accountable-content {
     display: flex;
+    font-family: $main-font;
+    // flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -13,5 +18,25 @@
     justify-content: center;
     align-items: center;
     padding-left: 2vh;
+    border: 1px solid black;
+    font-family: $main-font;
+
 }
 
+.user-goals{
+    border: 1px solid green;
+    font-family: $main-font;
+}
+
+.user-interests{
+    border: 1px solid blue;
+    font-family: $main-font;
+
+}
+
+.modal-btn{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    font-family: $main-font;
+}

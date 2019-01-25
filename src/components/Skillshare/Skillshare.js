@@ -10,6 +10,43 @@ import UpdateSkills from './UpdateSkills';
 import { Modal, Button } from 'react-bootstrap';
 import LikeToggle from './LikeToggle';
 
+//GridList with Material-UI
+import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import PropTypes from 'prop-types';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { IconButton } from '@material-ui/core';
+
+
+
+
+
+const styles = theme => ({
+    root: {
+      display: 'flex',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+    //   borderRadius: '50%',
+    //   padding: 'vh',
+      backgroundColor: theme.palette.background.paper,
+    },
+    gridList: {
+      flexWrap: 'nowrap',
+      // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+      transform: 'translateZ(0)',
+    },
+    title: {
+      color: theme.palette.primary.light,
+    },
+    titleBar: {
+      background:
+        'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    },
+  });
 // import LoginModal from '../Dashboard/LoginModal'
 
 class Skillshare extends Component {
@@ -26,6 +63,9 @@ class Skillshare extends Component {
             text: ''
         }
     }
+
+
+
 
     handleChange(prop, value) {
         this.setState({
@@ -98,21 +138,21 @@ class Skillshare extends Component {
             showConfirmButton: true
         })
         if (text) {
-          const res = await axios.get(`/recommend?text=${text}`)
+            const res = await axios.get(`/recommend?text=${text}`)
             console.log(res.data)
-            if(res.data == 'brain'){
+            if (res.data === 'brain') {
                 const res = await axios.get(`/brain`)
                 // console.log(res.data)
                 this.setState({
                     userSkills: res.data
                 })
-            }else if(res.data == 'body'){
+            } else if (res.data === 'body') {
                 const res = await axios.get('/body')
                 console.log(res.data)
                 this.setState({
-                    userSkills:res.data
+                    userSkills: res.data
                 })
-            }else{
+            } else {
                 // const res = await axios.get(`/api/get_skills`)
                 // // console.log(res.data);
                 // this.setState({ userSkills: res.data })
@@ -132,27 +172,72 @@ class Skillshare extends Component {
 
     render() {
         const { userSkills, mySkills } = this.state;
+
+        // function mySkillsSingleList(){
+        //     return(
+                
+        //         <div className={styles.root} style={{paddingTop:'20vh'}}>
+        //         <GridList className={styles.gridList} >
+        //           {mySkills.map(tile => (
+                                        //        <UpdateSkills
+                                        //        updateSkills={this.updateSkills}
+                                        //        skills_posts={this.skills_posts}
+                                        //        years={this.years}
+                                        //        description={this.description}
+                                        //        img={this.img}
+                                        //        id={tile.skills_id}
+                                        //    /> 
+        //             <GridListTile key={tile.img}>
+        //               <img src={tile.img} alt='picture' />
+        //               <GridListTileBar
+        //                     title={tile.description}
+        //                 // classes={{
+        //                 //   root: classes.titleBar,
+        //                 //   title: classes.title,
+        //                 // }}
+        //                 actionIcon={
+        //                   <IconButton>
+        //                     <StarBorderIcon className={tile.description} />
+        //                   </IconButton>
+        //                 }
+        //               />
+        //             </GridListTile>
+        //           ))}
+        //         </GridList>
+        //       </div>
+        //     )
+        // }
+
         let mapMySkills = mySkills.map((mySkill, i) => {
             return (
-                <div key={i}>
+                <div className={styles.root} key={i}>
 
-                    <div className='update_skills'>
-
-                        {mySkill.skills_posts}
-                        {mySkill.description}
-                        {mySkill.years}
-                        <button onClick={() => { this.deleteSkills(mySkill.skills_id) }}>Delete</button>
-
-                        <UpdateSkills
-                            updateSkills={this.updateSkills}
-                            skills_posts={this.skills_posts}
-                            years={this.years}
-                            description={this.description}
-                            img={this.img}
-                            id={mySkill.skills_id}
+                    {/* <div className='update_skills'> */}
+                    <GridList className={styles.gridList} cols={2.5}>
+                        <GridListTile key={mySkill.img} cols={2} >
+                        <img src={mySkill.img} alt='myskills-images' />
+                        <GridListTileBar 
+                            actionIcon={<IconButton><StarBorderIcon className={mySkill.description}/></IconButton>}
                         />
 
-                    </div>
+                        {/* {mySkill.skills_posts}
+                        {mySkill.description}
+                        {mySkill.years} */}
+                        </GridListTile>
+                    </GridList>
+                    <button onClick={() => { this.deleteSkills(mySkill.skills_id) }}>Delete</button>
+                    <UpdateSkills
+                                               updateSkills={this.updateSkills}
+                                               skills_posts={this.skills_posts}
+                                               years={this.years}
+                                               description={this.description}
+                                               img={this.img}
+                                               id={mySkill.skills_id}
+                                           /> 
+
+
+
+                    {/* </div> */}
                 </div>
             )
         })
@@ -160,29 +245,51 @@ class Skillshare extends Component {
 
         // console.log(userSkills)
         let mapSkills = userSkills.map((skill, i) => {
-
+            // const {classes} = props;
             return (
                 <div className='skillshare-map' key={i}>
-                    {skill.skills_posts}
-                    {skill.description}
-                    {skill.years}
-                    <LikeToggle />
+                    <GridList cellHeight={300} style={{ width: 350 }}>
+                        <GridListTile key={skill.img} cols={2} >
+                            <img className='skills-img' src={skill.img} alt='skills-images' />
+                            <GridListTileBar
+                            title={skill.skills_posts}
+                            
+                            
+                            />
+
+                        </GridListTile>
+                    </GridList>
+                        <p className='skills'> Years Experience: {skill.years}</p>
+                        <p className='skills'> Description: {skill.description}</p>
+                        <p className='skills'> What I Can Share: {skill.skills_posts} </p>
+                        <br/>
+
                 </div>
             )
         })
         return (
             <div className='skillshare-page'>Skillshare
-            {mapSkills}
+
                 {mapMySkills}
+                {/* {mySkillsSingleList()} */}
 
 
-                <p className='modal-btn'>
-                    <button onClick={this.toggleModal}>Want To Share Your Skill?</button>
-                </p>
-                <p>
-                    <Button onClick={() => { this.getRecommendation() }}> What Are You Trying To Learn Or Train For?</Button>
-                    {/* <LoginModal/> */}
-                </p>
+                <div className='buttons' style={{paddingTop:'10vh'}}>
+                    <p className='modal-btn'>
+                        <button onClick={this.toggleModal}>Want To Share Your Skill?</button>
+                    </p>
+                    <p>
+                        <Button className='recommendation-button' onClick={() => { this.getRecommendation() }}> What Are You Trying To Learn Or Train For?</Button>
+                        {/* <LoginModal/> */}
+                    </p>
+                </div>
+
+
+                <div className='all-skills'>
+
+
+                    {mapSkills}
+                </div>
 
                 <Modal
                     {...this.props}
@@ -217,6 +324,8 @@ class Skillshare extends Component {
 }
 
 
+
+
 const mapStateToProps = (reduxState) => reduxState;
 
-export default connect(mapStateToProps, { getUserData })(withRouter(Skillshare));
+export default connect(mapStateToProps, { getUserData })(withRouter(withStyles(styles)(Skillshare)));

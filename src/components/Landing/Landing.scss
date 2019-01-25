@@ -5,9 +5,10 @@ $main-font:'Sarabun', sans-serif;
 
 
 .landing-main{
-    background-image: url('https://i2.wp.com/ptech-llc.com/wp-content/uploads/2016/07/landing-background-1.jpg?ssl=1');
+    // background-image: url('https://lh3.googleusercontent.com/9X_fqwCMv3zjd3gdfUrdhMLfAqt-dbY07YEM-0qSIZK92tDWnHQbn4aPB9FqUgzUUfkdOHkzh6iFE0eqnKUs4yoDVU5BywK7GreCKJIQhP-zeQd6p7d6ywCRymP8p340v3iPc4wiNrFZ484a8NultV0McNaTTG61dgW6jxJi39aC6QVDML_3rACArx8l8sNyaQwK7C2-J9ydltq5MQJjOWFVki1AvMKAjy6tww90DlQ019pV2thllD9VIEYL6pO0RN-SRphntziNPNroUbK7zqgi2Qz1i3nNbmjo2NrIPX02TXUiez9vvqTvqoNde4u1GrA2_CfDVvSJ-Ab6pKasKu15ib3NipKKrX8ncihhRVf_qychyEOT-Xw2_pMOPoQ-L6VprvtW_GlRfR30-Cr-WeT9iHAE4bkoTI_vEm3DF-g2bFbGpZNszsVngtjZrsc2xb44XQ9AdaB0z3mOQd0FVjH6AXe1Tqj6VvPRkeY9-mfZwph7t1kc7_MqLRh5yRQsTCTwSwcsTcH2YgI2HqKQCpTNGmi7gukSZ-RvsqUXiG9Igl8nCSpB0CxdxrcpmDBS2wn2L6oJyk3poXeMufGENULUot-lqCdbrnbHfrFxAiRBW5shMotSPcFT7E0gmwZdmdZJzs4KShjtTItWXqHBb3QO=w987-h569-no');
     background-size: cover;
     background-repeat: none;
+    background-color: #F5F7FB;
 }
 
 .landing-header{
@@ -15,20 +16,52 @@ $main-font:'Sarabun', sans-serif;
     // width: 10vh;
     position: fixed;
     // left: vh;
-    top: 13vh;
-    left: 42vh;
+    top: 10vh;
+    left: 23vh;
     width: 37%;
     font-family:'Noto Sans JP', sans-serif;
     font-size: 6vh;
+}
+
+.popover{
+    display: block;
+    top: 19vh;
+    top: 4;
+    width: 60%;
+    left: 70vh;
+    background-color: grey;
+}
+
+div.modal-content{
+    position: absolute;
+    height: 57vh;
+    width: 59vh;
+    right: -43vh;
+    top: 21vh;
+    background-color:white;
+    color: black;
+}
+
+div.static-modal.modal{
+    display: none;
+}
+
+.main-logo{
+    position: fixed;
+    height: 89vh;
+    width: 88vh;
+    top: 11vh;
+    left: 2vh;
+
 
 }
 
 .rocket-ship{
-    height: 42vh;
-    width: 46vh;
+    height: 49vh;
+    width: 50vh;
     position: fixed;
-    left: 96vh;
-    top: 2vh;
+    left: 86vh;
+    top: 9vh;
 }
 
 // .jumbo{

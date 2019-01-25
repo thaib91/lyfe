@@ -1,12 +1,27 @@
+$main-font:'Sarabun', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Sarabun');
 .skillshare-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: $main-font;
     height: 100vh;
     width: 100vw;
     background-color:#FFFFFF;
     // font-size: 100px;
+}
+
+.all-skills{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 10vh;
+    font-family: $main-font;
+
 }
 
 .skillshare-map{
@@ -16,6 +31,10 @@
     align-items: center;
     font-size: 30px;
     box-sizing: border-box;
+    border: 20px;
+    padding: 20px;
+    font-family: $main-font;
+
 }
 
 .create-skillshare{
@@ -28,6 +47,8 @@
     background-color:white;
     display: flex;
     flex-direction: column;
+    font-family: $main-font;
+
 }
 
 .input{
@@ -38,6 +59,8 @@
     height: 8vh;
     width: 15vw;
     display: flex;
+    font-family: $main-font;
+
 }
 
 .post-btn{
@@ -48,5 +71,14 @@ background-color: burlywood;
 height: 8vh;
 width: 15vw;
 display: flex;
+font-family: $main-font;
+}
+
+// .skills-img{
+//     display: inline;
+//     border-radius: 50%;
+// }
+.MuiGridListTile-tile-7{
+    border-radius: 5px;
 }
 

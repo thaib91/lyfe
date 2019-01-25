@@ -5,6 +5,8 @@
   "proxy": "http://localhost:4343",
   "main": "server/server.js",
   "dependencies": {
+    "@material-ui/core": "^3.9.0",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "brain.js": "^1.6.1",
@@ -26,6 +28,7 @@
     "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.7.0",
     "react-facebook": "^6.0.15",
+    "react-list": "^0.8.11",
     "react-redux": "^6.0.0",
     "react-responsive-modal": "^3.5.1",
     "react-router-dom": "^4.3.1",

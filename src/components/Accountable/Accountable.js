@@ -8,6 +8,11 @@ import UpdateInterests from './UpdateInterests';
 import Goal from './Goal/Goal'
 import './Accountable.scss'
 import Messenger from '../../Messenger/Messenger'
+import ReactList from 'react-list';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+
 
 
 class Accountable extends Component {
@@ -77,8 +82,8 @@ class Accountable extends Component {
     }
 
     updateGoals = async (id, goalEdit) => {
-        const {userGoals} = this.state;
-        const res = await axios.put(`/api/user/updateGoal/${id}`, {goalEdit})
+        const { userGoals } = this.state;
+        const res = await axios.put(`/api/user/updateGoal/${id}`, { goalEdit })
         this.setState({
             ...userGoals,
             userGoals: res.data,
@@ -136,7 +141,7 @@ class Accountable extends Component {
 
         let goals = userGoals.map((goal, i) => {
             return (
-                <div key={i}>
+                <div className='user-goals' key={i}>
                     {goal.goal}
                     <Goal
                         updateGoals={this.updateGoals}
@@ -154,15 +159,17 @@ class Accountable extends Component {
 
         let interests = userInterests.map((interest, i) => {
             return (
-                <div key={i}>
+                <div className='user-interests' key={i}>
+
                     {interest.user_interests}
+
                     <UpdateInterests
                         updateInterest={this.updateInterests}
                         text={this.state.editInput}
                         id={interest.interests_id}
                     />
 
-                    <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete</button>
+                    <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete Interests</button>
                     <div>
 
                     </div>
@@ -170,28 +177,39 @@ class Accountable extends Component {
             )
         })
         return (
+            <div>
+            <div>
+                <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
+                <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
-
+                <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
+                <button onClick={() => { this.createInterests() }}>Share Interests</button>
+            </div>
             <div className='accountable-content'>
+
                 <p>Accountable</p>
                 <p>{username}</p>
                 <p>{id}</p>
                 <p>{email}</p>
-                <div>
+                <div className='interests-list'>
                     <div>{interests}</div>
+                </div>
+                <div>
                     <div>{goals}</div>
-                <Messenger />
-
-                </div >
+                </div>
                 <div className='create-buttons'>
-                     {/* <input className='date-input' onChange={(e) => this.handleChange('dateInput', e.target.value)} value={this.state.dateInput} /> */}
+                    {/* <input className='date-input' onChange={(e) => this.handleChange('dateInput', e.target.value)} value={this.state.dateInput} /> */}
                     <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
                     <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
                     <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
                     <button onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
+
+                <Messenger />
+
             </div>
+        </div>
         );
     };
 };
