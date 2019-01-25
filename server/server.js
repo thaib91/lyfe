@@ -39,13 +39,7 @@ app.get('/brain', rc.getBrain)
 app.get('/body', rc.getBody)
 
 
-const io = socket(app.listen(SERVER_PORT, ()=>console.log(`Sockets listening on port ${SERVER_PORT}`) )
-
-// const io = socket(SERVER_PORT, {
-//     path: '/chat/socket.io'
-//   });
-
-// ()=>console.log(`Sockets listening on port ${SERVER_PORT}`))
+const io = socket(app.listen(SERVER_PORT,()=>console.log(`Sockets listening on port ${SERVER_PORT}`)))
 
 //Sockets Serverside implementation for global chatroom using Socket.io
 

@@ -17,7 +17,7 @@ export default class LiveChat extends Component {
             liveChatOpen: false
 
         };
-        this.socket = io.connect(":4343", {secure:true, rejectUnauthorized: false, path: '/chat/socket.io'});
+        this.socket = io.connect(":4343", {secure:true, rejectUnauthorized: false});
         this.socket.on('generate general response', data => this.generalResponse(data));
         this.socket.on('generate room response', data => this.roomResponse(data));
         // this.socket.on('user is typing', data => this.setUserTyping(data));
