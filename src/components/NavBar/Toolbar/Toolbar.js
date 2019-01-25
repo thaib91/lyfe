@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import DrawerToggle from '../SideDrawer/DrawerToggle';
 import LoginModal from '../../Dashboard/LoginModal'
 import LiveChat from '../../../Messenger/LiveChat/LiveChat'
+require('dotenv').config();
 
 
 
@@ -31,7 +32,7 @@ const toolbar = props => (
                             <a> <li onClick={() => props.toggle()}>Login</li> </a>
                         ) : (   
                          
-                                <a href='http://localhost:4343/auth/logout'>  <li >Logout</li> </a>
+                                <a href={process.env.REACT_APP_LYFE_SERVER_LOGOUT}>  <li >Logout</li> </a>
 
                             )
                     }

@@ -1,10 +1,13 @@
 
+const path = require('path'); // Usually moved to the start of file
 const express = require('express');
 require('dotenv').config();
 const { SERVER_PORT, CONNECTION_PORT, SECRET, NODE_ENV} = process.env;
 const massive = require('massive');
 const session = require('express-session');
 const socket = require('socket.io');
+
+
 
 
 //controllers
@@ -26,6 +29,9 @@ app.use(session({
     saveUninitialized: false
 }))
 
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 // brain.js recommend engine
 app.get('/recommend', rc.recommendCategory)
 app.get('/brain', rc.getBrain)
