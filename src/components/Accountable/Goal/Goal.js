@@ -33,13 +33,13 @@ export default class Goal extends Component {
         return (
             <div className='goal-page'>
                 <div>
-                    <button className='delete-goal-btn'
+                    <button id='accountable-buttons' className='delete-goal-btn'
                         onClick={() => { this.deleteUserGoals() }}>Delete Goal</button>
 
                 </div>
                 <div>
                     <input className='edit-goal-box' onChange={(e) => this.handleChange('editGoal', e.target.value)} value={this.editGoal} />
-                    <button className='edit-goal-btn' onClick={() => this.updateGoals()}>Edit</button>
+                    <button id='accountable-buttons' className='edit-goal-btn' onClick={() => this.updateGoals()}>Edit</button>
                 </div>
 
             </div>

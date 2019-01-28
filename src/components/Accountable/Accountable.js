@@ -156,7 +156,7 @@ class Accountable extends Component {
 
                     <Well><strong>Interests:</strong><br/><div>{interest.user_interests}</div></Well>
 
-                    <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete Interests</button>
+                    <button id='accountable-buttons' onClick={() => this.deleteInterests(interest.interests_id)}>Delete Interests</button>
 
                     <UpdateInterests
                         updateInterest={this.updateInterests}
@@ -176,11 +176,11 @@ class Accountable extends Component {
                     <div className='create-goal'>
                         {/* <input className='date-input' onChange={(e) => this.handleChange('dateInput', e.target.value)} value={this.state.dateInput} /> */}
                         <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
-                        <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
+                        <button id='accountable-buttons' className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
                     </div>
                     <div className='create-input'>
                         <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
-                        <button onClick={() => { this.createInterests() }}>Share Interests</button>
+                        <button id='accountable-buttons' onClick={() => { this.createInterests() }}>Share Interests</button>
                     </div>
                 </div>
                 <div className='message-btns'>
@@ -189,10 +189,10 @@ class Accountable extends Component {
                 <ProgressBar active now={45} />
                  <div className='accountable-input'>
                     <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
-                    <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
+                    <button id='accountable-buttons' className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
                     <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
-                    <button onClick={() => { this.createInterests() }}>Share Interests</button>
+                    <button id='accountable-buttons' onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
                 <div className='accountable-content' style={{backgroundImage: 'url("https://wallimpex.com/data/out/459/inspirational-background-pictures-8283639.jpg")'}}>
                     <div className='user-display'>

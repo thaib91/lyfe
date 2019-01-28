@@ -224,12 +224,12 @@ class Skillshare extends Component {
                          </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div className='create-skillshare'>
+                        {/* <div className='create-skillshare'> */}
                             <input onChange={(e) => { this.handleChange('skills_posts', e.target.value) }} placeholder='skills-posts' value={this.state.skills_posts} />
                             <input onChange={(e) => { this.handleChange('years', e.target.value) }} placeholder='years' value={this.state.years} />
                             <input onChange={(e) => { this.handleChange('description', e.target.value) }} placeholder='description' value={this.state.description} />
                             <input onChange={(e) => { this.handleChange('img', e.target.value) }} placeholder='img' value={this.state.img} />
-                        </div>
+                        {/* </div> */}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className='post-btn' onClick={() => { this.createSkills() }}>Create New Post</Button>
