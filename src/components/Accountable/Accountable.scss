@@ -3,19 +3,65 @@ $main-font:'Sarabun', sans-serif;
 @import url('https://fonts.googleapis.com/css?family=Sarabun');
 
 .accountable-content {
+    // display: flex;
+    font-family: "Sarabun", sans-serif;
+    // justify-content: space-around;
+    /* align-items: baseline; */
+    box-sizing: border-box;
+    padding-top: 9vh;
+    z-index: -1;
+    /* padding-left: 20vw; */
     display: flex;
-    font-family: $main-font;
-    // flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    padding-top: 3vh;
-    z-index: -1;
+}
+
+.interests{
+    display: flex !important;
+    flex-wrap: wrap;
+    // flex-direction: column;
+    height: auto;
+    width: auto;
+    justify-content: center;
+    padding-top: 14vh;
+
+}
+
+div.well{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.goals{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 input{
     border: 1px solid black;
+    width: 7vw;
 }
+
+button.btn.btn-default {
+    font-family: "Sarabun", sans-serif;
+    top: 6vh;
+    // position: fixed;
+    left: 85vh;
+    padding: 14px;
+}
+
+.accountable-input{
+    display: inline;
+    padding-left: 38vw;
+}
+
+
 
 h3.popover-title{
     font-size: 20px;
@@ -23,11 +69,15 @@ h3.popover-title{
 }
 
 .user-display{
-    position: fixed;
+    position: absolute;
     top: 14vh;
     left: 4vh;
-    height: 10vh;
-    width: 19vh;
+    height: 12vh;
+    width: 8vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .create-buttons{
@@ -52,10 +102,13 @@ h3.popover-title{
 .user-interests{
     border: 1px solid whitesmoke;
     font-family: $main-font;
-    width: 62vh;
+    width: 10vw;
     border-radius: 5px;
     padding: 5px;
-
+    margin: 1vw;
+    height: 23vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-btn{
@@ -91,8 +144,9 @@ div.progress {
     width: 551px;
     height: 2vh;
     position: absolute;
-    top: 14vh;
+    top: 9vh;
     border: 1px solid black;
-    left: 54vh;
+    left: 38vw;
     z-index: 1;
+    display: inline;
 }

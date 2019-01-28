@@ -14,6 +14,28 @@ $main-font:'Sarabun', sans-serif;
     // font-size: 100px;
 }
 
+.skillshare-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.MuiGridListTileBar-title-17{
+    display: flex;
+    justify-content: center;
+    font-family: $main-font;
+}
+
+.skills{
+    font-size: 32px;
+}
+
+strong{
+    color: #3955a5;
+    font-size: x-large !important;
+}
+
 .all-skills{
     display: flex;
     flex-wrap: wrap;
@@ -43,8 +65,8 @@ $main-font:'Sarabun', sans-serif;
     justify-content: center;
     align-items: center;
     padding: 5px;
-    height: 270px;
-    width: 500px;
+    height: 100%;
+    width: auto;
     background-color:white;
     display: flex;
     flex-direction: column;
@@ -91,5 +113,8 @@ div.modal-content{
     top: 21vh;
     background-color: white;
     color: black;
+}
+.modal-body{
+    height: 14vh;
 }
 

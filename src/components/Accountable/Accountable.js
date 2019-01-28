@@ -135,7 +135,7 @@ class Accountable extends Component {
         let goals = userGoals.map((goal, i) => {
             return (
                 <div className='user-goals' key={i}>
-                    <Well>{goal.goal}</Well>
+                    <Well><strong>Goals</strong><div>{goal.goal}</div></Well>
                     <Goal
                         updateGoals={this.updateGoals}
                         deleteGoal={this.deleteGoals}
@@ -154,7 +154,7 @@ class Accountable extends Component {
             return (
                 <div className='user-interests' key={i}>
 
-                    <Well>{interest.user_interests}</Well>
+                    <Well><strong>Interests:</strong><br/><div>{interest.user_interests}</div></Well>
 
                     <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete Interests</button>
 
@@ -186,27 +186,25 @@ class Accountable extends Component {
                 <div className='message-btns'>
                     <Messenger />
                 </div>
-                <ProgressBar active now={45} />;
-        <div>
+                <ProgressBar active now={45} />
+                 <div className='accountable-input'>
                     <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
                     <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
                     <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
                     <button onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
-                <div className='accountable-content'>
+                <div className='accountable-content' style={{backgroundImage: 'url("https://wallimpex.com/data/out/459/inspirational-background-pictures-8283639.jpg")'}}>
                     <div className='user-display'>
                         <p>Accountable</p>
                         <p>{id}</p>
                         <p>{email}</p>
                     </div>
                     <div className='accountable-list'>
-                        <div className='interests-list'>
-                            <div>{interests}</div>
-                        </div>
-                        <div className='goals-list'>
-                            <div>{goals}</div>
-                        </div>
+                            <div className='interests'>{interests} <br/></div>
+                            <div className='goals'>{goals}</div>
+                            <hr/>
+                            {/* <div className='goals'>{goals}</div> */}
                     </div>
                 </div>
             </div>

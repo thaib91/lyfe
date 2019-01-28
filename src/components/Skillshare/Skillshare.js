@@ -110,6 +110,7 @@ class Skillshare extends Component {
         this.setState({
             mySkills: res.data
         })
+        this.getMySkills();
     }
 
     updateSkills = async (id, body) => {
@@ -170,10 +171,12 @@ class Skillshare extends Component {
                             />
                         </GridListTile>
                     </GridList>
-                    <p className='skills'> Years Experience: {skill.years}</p>
-                    <p className='skills'> Description: {skill.description}</p>
-                    <p className='skills'> What I Can Share: {skill.skills_posts} </p>
+                    <div className='skillshare-list'>
+                    <p className='skills'> <strong>Years Experience: </strong> {skill.years}</p>
+                    <p className='skills'> <strong>Description:</strong> {skill.description}</p>
+                    <p className='skills'> <strong>What I Can Share:</strong> {skill.skills_posts} </p>
                     <br />
+                    </div>
 
                     {this.props.user.id === skill.user_id ?
                         (<div className='update-skills'>

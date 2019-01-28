@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Button } from 'react-bootstrap';
+import './Messenger.scss';
 
 
 export default class Messenger extends Component {
@@ -52,7 +53,7 @@ export default class Messenger extends Component {
 
     render() {
         return (
-            <div>
+            <div className='messenger-btns'>
                 {/* <input className='recipient' onChange={(e)=>{this.handleChange('recipient', e.target.value)}} placeholder='recipient'/>
                 <input className='text' onChange={(e)=>{this.handleChange('text', e.target.value)}} placeholder='text'/> */}
                 <Button onClick={()=>{this.sendText()}}> Text Message! </Button>
