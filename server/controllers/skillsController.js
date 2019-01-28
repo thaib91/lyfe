@@ -31,7 +31,7 @@ module.exports = {
             });
            res.status(200).send(createSkills);
         }
-
+        this.getSkills();
     },
     deleteSkills: async (req, res) => {
         const db = req.app.get('db');
