@@ -20,7 +20,7 @@ cron.schedule('0 0 * * 0', ()=>{
     auth: {
         type: 'login',
         user: 'team.lyfer@gmail.com',
-        pass: 'testpassword1-5'
+        pass: 'devmountain1-5'
     },
   });
   let mailOptions = {
@@ -61,7 +61,7 @@ cron.schedule('0 0 * * 0', ()=>{
           auth: {
               type: 'login',
               user: 'team.lyfer@gmail.com',
-              pass: 'testpassword1-5'
+              pass: 'devmountain1-5'
           },
         });
         const {text} = req.query;
