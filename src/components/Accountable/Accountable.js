@@ -195,11 +195,11 @@ class Accountable extends Component {
                     <button id='accountable-buttons' onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
                 <div className='accountable-content' style={{backgroundImage: 'url("https://wallimpex.com/data/out/459/inspirational-background-pictures-8283639.jpg")'}}>
-                    <div className='user-display'>
+                    {/* <div className='user-display'>
                         <p>Accountable</p>
                         <p>{id}</p>
                         <p>{email}</p>
-                    </div>
+                    </div> */}
                     <div className='accountable-list'>
                             <div className='interests'>{interests} <br/></div>
                             <div className='goals'>{goals}</div>
