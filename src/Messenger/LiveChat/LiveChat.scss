@@ -1,7 +1,7 @@
 .live-chat{
     position: fixed;
     height: 300px;
-    width: 150px;
+    width: 174px;
     border: 2px solid black;
     background-color: white;
     margin: 10px;
@@ -9,15 +9,23 @@
     bottom: 5px;
     display: flex;
     flex-direction: column-reverse;
-    /* justify-content: center; */
-    align-items: center;
+    border-radius: 5vh;
+    z-index: 1;
+
   
 }
 
+// hr{
+//     position: fixed;
+// }
+
 .input-chat {
+    position: fixed;
     height: 5vh;
-    width: 18vh;
-    margin-bottom: 15px;
+    width: auto;
+    margin-bottom: 14px;
+    bottom: 14vh;
+    border: none;
 }
 
 .chat-button{
@@ -42,6 +50,14 @@ i{
     right: 10px;
     bottom: 15px;
     color:#B97A38;
+}
+
+.display-messages{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 51vh;
+    right: 13vh;
 }
 
 // display: flex;

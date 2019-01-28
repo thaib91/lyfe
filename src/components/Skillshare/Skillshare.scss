@@ -1,6 +1,7 @@
 $main-font:'Sarabun', sans-serif;
 
 @import url('https://fonts.googleapis.com/css?family=Sarabun');
+
 .skillshare-page{
     display: flex;
     flex-direction: column;
@@ -80,5 +81,15 @@ font-family: $main-font;
 // }
 .MuiGridListTile-tile-7{
     border-radius: 5px;
+}
+
+div.modal-content{
+    position: absolute;
+    height: 57vh;
+    width: 84vh;
+    right: 14vh;
+    top: 21vh;
+    background-color: white;
+    color: black;
 }
 

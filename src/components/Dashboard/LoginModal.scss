@@ -1,9 +1,30 @@
+$main-font:'Sarabun', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Sarabun');
+
+
+
 
 .landing-main {
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
+}
+
+button.btn.btn-default{
+    font-family: $main-font;
+}
+
+button.btn.btn-primary{
+    font-family: $main-font;
+    background-color: white;
+    color: black;
+}
+
+input{
+    border: 2px solid whitesmoke;
+    border-radius: 16px;
 }
 
 .static-modal{
@@ -38,4 +59,50 @@
 .login-button{
     background: none;
     border: none;
+}
+
+h4.modal-title{
+    font-size: 30px;
+    font-family: $main-font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body{
+    font-family: $main-font;
+    position: relative;
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    // background-color:#3955a5;
+}
+
+div.modal-content {
+    position: absolute;
+    height: 28vh !important;
+    width: 40vh !important;
+    right: 14vh;
+    top: 21vh ;
+    background-color: white;
+    color: black;
+    border-radius: 1vh;
+
+}
+
+div.modal-header{
+    background-color:#3955a5;
+    color: white !important;
+    border-top-left-radius: 1vh;
+    border-top-right-radius: 1vh;
+}
+
+div.modal-footer{
+    background-color: #3955a5;
+    padding: 21px;
+    border-bottom-left-radius: 1vh;
+    border-bottom-right-radius: 1vh;
 }

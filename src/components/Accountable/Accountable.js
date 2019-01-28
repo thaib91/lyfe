@@ -8,12 +8,7 @@ import UpdateInterests from './UpdateInterests';
 import Goal from './Goal/Goal'
 import './Accountable.scss'
 import Messenger from '../../Messenger/Messenger'
-import ReactList from 'react-list';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-
-
+import { ProgressBar, Well } from 'react-bootstrap';
 
 class Accountable extends Component {
     constructor(props) {
@@ -133,16 +128,14 @@ class Accountable extends Component {
         })
     }
 
-    // this.state.userInterests[0].interests_id
     render() {
-        // console.log(this.props);
-        const { id, email, username } = this.props.user;
+        const { id, email } = this.props.user;
         const { userInterests, userGoals } = this.state;
 
         let goals = userGoals.map((goal, i) => {
             return (
                 <div className='user-goals' key={i}>
-                    {goal.goal}
+                    <Well>{goal.goal}</Well>
                     <Goal
                         updateGoals={this.updateGoals}
                         deleteGoal={this.deleteGoals}
@@ -161,7 +154,9 @@ class Accountable extends Component {
             return (
                 <div className='user-interests' key={i}>
 
-                    {interest.user_interests}
+                    <Well>{interest.user_interests}</Well>
+
+                    <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete Interests</button>
 
                     <UpdateInterests
                         updateInterest={this.updateInterests}
@@ -169,7 +164,6 @@ class Accountable extends Component {
                         id={interest.interests_id}
                     />
 
-                    <button onClick={() => this.deleteInterests(interest.interests_id)}>Delete Interests</button>
                     <div>
 
                     </div>
@@ -177,39 +171,45 @@ class Accountable extends Component {
             )
         })
         return (
-            <div>
-            <div>
-                <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
-                <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
-
-                <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
-                <button onClick={() => { this.createInterests() }}>Share Interests</button>
-            </div>
-            <div className='accountable-content'>
-
-                <p>Accountable</p>
-                <p>{username}</p>
-                <p>{id}</p>
-                <p>{email}</p>
-                <div className='interests-list'>
-                    <div>{interests}</div>
-                </div>
-                <div>
-                    <div>{goals}</div>
-                </div>
+            <div className='accountable-main'>
                 <div className='create-buttons'>
-                    {/* <input className='date-input' onChange={(e) => this.handleChange('dateInput', e.target.value)} value={this.state.dateInput} /> */}
+                    <div className='create-goal'>
+                        {/* <input className='date-input' onChange={(e) => this.handleChange('dateInput', e.target.value)} value={this.state.dateInput} /> */}
+                        <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
+                        <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
+                    </div>
+                    <div className='create-input'>
+                        <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
+                        <button onClick={() => { this.createInterests() }}>Share Interests</button>
+                    </div>
+                </div>
+                <div className='message-btns'>
+                    <Messenger />
+                </div>
+                <ProgressBar active now={45} />;
+        <div>
                     <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
                     <button className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
 
                     <input className='create-input-box' onChange={(e) => this.handleChange('userInput', e.target.value)} value={this.state.userInput} />
                     <button onClick={() => { this.createInterests() }}>Share Interests</button>
                 </div>
-
-                <Messenger />
-
+                <div className='accountable-content'>
+                    <div className='user-display'>
+                        <p>Accountable</p>
+                        <p>{id}</p>
+                        <p>{email}</p>
+                    </div>
+                    <div className='accountable-list'>
+                        <div className='interests-list'>
+                            <div>{interests}</div>
+                        </div>
+                        <div className='goals-list'>
+                            <div>{goals}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
         );
     };
 };

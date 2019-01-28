@@ -104,11 +104,11 @@ export default class LiveChat extends Component {
             <div className='liveChatToggle'>
 
             {this.state.liveChatOpen ? (<div  className='live-chat'>
-
                 <p>
-                    {this.props.room ? `Room: ${this.props.room}` : 'Global Lobby'}
+                    {/* {this.props.room ? `Room: ${this.props.room}` : 'Global Lobby'} */}
                     <hr />
                     <input
+                        placeholder='Learn From Others! =)'
                         className='input-chat'
                         type='text'
                         onChange={(e) => this.updateInput(e.target.value)}
@@ -117,7 +117,6 @@ export default class LiveChat extends Component {
                 </p>
                 <button className='send-button' onClick={() => { this.sendMessage('blast', this.state.message) }}>Send</button>
                 <button className='close-button' onClick={()=>{this.toggleLiveChat()}}>Close</button>
-                <hr />
                 <div className='display-messages'>{messages}</div>
                 {/* {this.state.userTyping && (
                     <p className='user-typing'>Another User is Typing</p>

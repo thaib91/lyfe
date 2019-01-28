@@ -9,7 +9,25 @@ $main-font:'Sarabun', sans-serif;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding-top: 10vh;
+    padding-top: 3vh;
+    z-index: -1;
+}
+
+input{
+    border: 1px solid black;
+}
+
+h3.popover-title{
+    font-size: 20px;
+    color: blue;
+}
+
+.user-display{
+    position: fixed;
+    top: 14vh;
+    left: 4vh;
+    height: 10vh;
+    width: 19vh;
 }
 
 .create-buttons{
@@ -24,13 +42,19 @@ $main-font:'Sarabun', sans-serif;
 }
 
 .user-goals{
-    border: 1px solid green;
+    border: 1px solid whitesmoke;
     font-family: $main-font;
+    width: 62vh;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .user-interests{
-    border: 1px solid blue;
+    border: 1px solid whitesmoke;
     font-family: $main-font;
+    width: 62vh;
+    border-radius: 5px;
+    padding: 5px;
 
 }
 
@@ -39,4 +63,36 @@ $main-font:'Sarabun', sans-serif;
     justify-content: center;
     border: 1px solid black;
     font-family: $main-font;
+}
+
+.interests-list{
+    display: flex;
+    flex-direction: column;
+    padding: 3vh;
+    position: fixed;
+    left: -1vh;
+    width: 47vh;
+}
+
+.goals-list{
+    display: flex;
+    flex-direction: column;
+    padding: 10vh;
+}
+
+.message-btns{
+    position: absolute;
+    width: 14vh;
+    bottom: 59px;
+    z-index: 2;
+}
+
+div.progress {
+    width: 551px;
+    height: 2vh;
+    position: absolute;
+    top: 14vh;
+    border: 1px solid black;
+    left: 54vh;
+    z-index: 1;
 }
