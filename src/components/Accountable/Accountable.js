@@ -186,7 +186,7 @@ class Accountable extends Component {
                 <div className='message-btns'>
                     <Messenger />
                 </div>
-                <ProgressBar active now={45} />
+                {/* <ProgressBar active now={45} /> */}
                  <div className='accountable-input'>
                     <input className='goal-input' onChange={(e) => this.handleChange('goalInput', e.target.value)} value={this.state.goalInput} />
                     <button id='accountable-buttons' className='goal-button' onClick={() => this.createGoals()}>Create Goal</button>
