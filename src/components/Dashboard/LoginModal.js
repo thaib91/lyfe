@@ -82,7 +82,7 @@ class LoginModal extends Component {
                         </div>
                         <div className='password-box'>
                             <span>Password: </span>
-                            <input onChange={(e) => this.handleChange('password', e.target.value)} type='text' />
+                            <input onChange={(e) => this.handleChange('password', e.target.value)} type='password' />
                         </div>
 
                     </Modal.Body>
