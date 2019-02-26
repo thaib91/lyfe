@@ -144,7 +144,6 @@ class Skillshare extends Component {
                 })
             } else if (res.data === 'body') {
                 const res = await axios.get('/body')
-                console.log(res.data)
                 this.setState({
                     userSkills: res.data
                 })
@@ -165,7 +164,7 @@ class Skillshare extends Component {
                 <div className='skillshare-map' key={i}>
                     <GridList cellHeight={300} style={{ width: 350 }}>
                         <GridListTile key={skill.img} cols={2} >
-                            <img className='skills-img' src={skill.img} alt='skills-images' />
+                            <img className='skills-img' src={skill.img} alt='skills-images'/>
                             <GridListTileBar
                                 title={skill.skills_posts}
                             />

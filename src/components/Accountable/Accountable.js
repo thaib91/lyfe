@@ -117,8 +117,6 @@ class Accountable extends Component {
     }
 
     updateInterests = async (id, editInput) => {
-
-        // console.log(id)
         const { userInterests } = this.state;
         const res = await axios.put(`/api/user/update_interests/${id}`, { editInput })
         this.setState({
