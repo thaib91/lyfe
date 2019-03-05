@@ -36,18 +36,15 @@ export default class Messenger extends Component {
     }
 
     sendEmail = async() => {
-
         const {value: text} = await Swal({
             title: 'Send an Email To A LYFER!',
             input: 'textarea',
             inputPlaceholder: 'Motivate A LYFER To Be Accountable! Maybe One Will Motivate You!',
             showConfirmButton: true
           })
-          
           if (text) {
             axios.get(`/email?text=${text}`)
           }
-
     }
 
 
